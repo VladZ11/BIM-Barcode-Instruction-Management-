@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * @author Dariusz Bakiewicz
+ */
+
+
+/**
+ * 
+ * @brief The main controller in this project.
+ * 
+ * Class resposible for control on project.
+ * Manages request environment and determines what happens.
+ * 
+ */
+class Controllers_IndexControl extends W_Controller_Controller {
+	
+	/**
+	 * 
+	 * @brief The main method in the main controllers.
+	 * 
+	 * Receives input and initiates a response by making calls on model objects.
+	 * 
+	 */
+
+	public function init(){
+
+    }
+
+
+    private function ScanCatalogs($pathRembeted, $paths){
+
+    }
+
+	public function indexAction()
+	{
+
+    }
+    private function removeWhitespace($variable){
+        if($variable)
+        {
+            return preg_replace('/\s+/', '', $variable);
+        }
+        return;
+    }
+    public function findBarcodeAction(){
+        $barc4 = $_POST["barc4"];
+        $barc4 = $this->removeWhitespace($barc4);
+        $findBarcode = $this->sqlc->findBarcode($barc4);
+        $this->pagec->findBarcode = $findBarcode['BARC4'];
+
+
+
+       // echo json_encode($findBarcode);
+/*        echo "<pre>";
+        echo print_r($findBarcode);
+        echo "</pre>";*/
+    }
+
+    public function getDataInstructionsAction()
+    {
+        $barc4 = $_POST["barc4"];
+        $barc4 = $this->removeWhitespace($barc4);
+        $side = $_POST["side"];
+        $findWpn = $this->sqlc->findBarcode($barc4);
+        $this->pagec->findWpn = $findWpn["WABCONR"];
+        $this->pagec->loadGeneralInformation = $loadGeneralInformation = $this->sqlc->loadGeneralInformation($barc4, $side);
+        $this->pagec->notes = $notes = $this->sqlc->notes($barc4, $side);
+        $this->pagec->printProg = $printProg = $this->sqlc->printProg($barc4, $side);
+        $this->pagec->printSqu = $printSqu = $this->sqlc->printSqu($barc4, $side);
+        $this->pagec->printSup = $printSup = $this->sqlc->printSup($barc4, $side);
+
+        $this->pagec->dockArm = $dockArm = $this->sqlc->dockArm($barc4, $side);
+        $this->pagec->dockPro = $dockPro = $this->sqlc->dockPro($barc4, $side);
+
+
+/*       echo "<pre>";
+        echo print_r($printProg);
+        echo "</pre>";*/
+    }
+}

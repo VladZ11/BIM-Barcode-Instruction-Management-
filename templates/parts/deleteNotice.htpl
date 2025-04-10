@@ -1,0 +1,18 @@
+<div class="row">
+        <div class="col-xs-12">
+            {if $_PARAMS.status  eq 2}
+                    <p class="text-success">Moje gratulacje, usunąłeś uwagę. </p>
+            {/if}
+        </div>
+        <div class="col-xs-12">
+                <label for="deleteNotice" class="col-xs-12 control-label">Usuwanie uwag</label>
+                <select id="deleteNotice" class="form-control col-xs-12 text-primary" name="deleteNotice">
+                        <option value="0">Wybierz uwagę</option>
+                    {section name=getTypicalNotes loop=$getTypicalNotes.NOTE}
+                            <option value="{$getTypicalNotes.ID_COMMENT[getTypicalNotes]}">
+                                    [{$getTypicalNotes.CATEGORY[getTypicalNotes]}] [{$getTypicalNotes.COLOR[getTypicalNotes]}] {$getTypicalNotes.NOTE[getTypicalNotes]}
+                            </option>
+                    {/section}
+                </select>
+        </div>
+</div>

@@ -1,0 +1,81 @@
+<?php 
+
+class Pre_Authorization extends W_Preoperation_preController{
+    public function preMethod(){
+        $this->pagec->ThemeName = (isset($_COOKIE['ThemeName'])) ? $_COOKIE['ThemeName'] : 'flatly';
+        //$this->loginAdmin();
+       // $logon = new W_Logon_Logon2($_SESSION['Trumna']['User']['VCS_USER'][0]);
+        $userTrumna = isset($_SESSION['Trumna']['User']) ? $_SESSION['Trumna']['User'] : array();
+/*       echo "<pre>";
+        echo print_r($_SESSION['Trumna']['User']);
+        echo "</pre>";*/
+
+
+        $acl = new Helper_Acl();
+        $user = Helper_UserData::instance();
+        if(isset($userTrumna["USER_FIRSTNAME"][0]))
+        {
+            $qdmPassWord = implode(",",$userTrumna["QDMPASSWORD"][0]);
+            $user->setUserName($userTrumna["USER_FIRSTNAME"][0]);
+            $user->setUserLastName($userTrumna["USER_SURNAME"][0]);
+            $user->setUserCode($qdmPassWord);
+            $user->setUserRole(self::userRole($qdmPassWord));
+            $user->setUserImid($userTrumna["IMID"][0]);
+            $this->prepSmartyUserVars($user);
+            self::isAllowed($user, $acl);
+        }
+        else{
+            $user->setUserRole(self::userRole(""));
+            $this->prepSmartyUserVars($user);
+            self::isAllowed($user, $acl);
+        }
+    }
+
+
+/*    public function loginAdmin(){
+        if (isset($_SESSION['Trumna']['User']['QDMPASSWORD'][0]) and in_array("vCH", $_SESSION['Trumna']['User']['QDMPASSWORD'][0])){
+            $this->pagec->admin = 1;
+            return;
+        }
+        $this->pagec->admin = 0;
+    }*/
+
+
+    private static function isAllowed(Helper_UserData $user, Helper_Acl $acl)
+    {
+        $resource = (isset($_REQUEST['controller'])) ? $_REQUEST['controller'] : 'index';
+      //  echo $resource . " ".$user->getUserRole();
+/*        echo $acl->isAllowed($user->getUserRole(), $resource);*/
+        if (!$acl->isAllowed($user->getUserRole(), $resource)) {
+            header('Location: index.php?controller=index');
+        }
+    }
+
+    private static function userRole($userpasswd)
+    {
+
+        $role = 'GUEST';
+        if(preg_match('/sAU/', $userpasswd)){
+            $role = 'USER';
+        }
+        if(preg_match('/sAA/', $userpasswd)){
+            $role = 'ADMIN';
+        }
+
+        return $role;
+        //return 'USER';
+    }
+
+    public function prepSmartyUserVars(Helper_UserData $user)
+    {
+        $this->pagec->userName = $user->getUserName();
+        $this->pagec->userLastName = $user->getUserLastName();
+        $this->pagec->userCode = $user->getUserCode();
+        $this->pagec->userRole = $user->getUserRole();
+        //$this->pagec->menu = Helper_Menu::getUserMenu($user->getUserRole());
+        $this->pagec->userImid = $user->getUserImid();
+    }
+
+
+
+}

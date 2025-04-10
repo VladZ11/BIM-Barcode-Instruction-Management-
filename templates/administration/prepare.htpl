@@ -1,0 +1,66 @@
+<div class="container" style="clear: both;">
+    <h1>Przygotowanie formularza instrukcji montażowej</h1>
+
+        <div class="col-sm-12 {if isset($error)}{if $error eq 0}text-success{else}text-danger{/if}{/if}">
+            <b>{if isset($error)}{if $error eq 0}Zapisano barkody {$savedBarcodes}{else}Nie zapisano barkodów {$noSavedBarcodes}.<br> Możliwe przyczyny:<br> 1) Do każdej instrukcji wymagana jest przynajmniej jedna uwaga,<br> 2) Instrukcja dla tego barkodu już istnieje w bazie danych.{/if}{/if}</b>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">&nbsp;</div>
+        </div>
+
+        <div class="form-group">
+            <label for="documentNr" class="col-sm-2 control-label">Wykonał:</label>
+            <div class="col-sm-10">
+               <select name="author" class="form-control" {if $sessionData.author}readonly{/if}>
+                   <option value="{$userImid}"> {$userName} {$userLastName}</option>
+               </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="side" class="col-sm-2 control-label">Strona:</label>
+            <div class="col-sm-10">
+                <select name="side" id="side" class="form-control" {if $sessionData.author}readonly{/if}>
+                    <option value="1" {if $sessionData.side eq 1}selected="selected"{/if}>W1</option>
+                    <option value="2" {if $sessionData.side eq 2}selected="selected"{/if}>W2</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="date" class="col-sm-2 control-label">Data:</label>
+            <div class="col-sm-10">
+                <input {if $sessionData.author}readonly{/if} type="text" name="date"  class="form-control js-calendar" id="date" placeholder="Data" value="{if isset($sessionData.date)}{$sessionData.date}{else}{$smarty.now|date_format:"%d-%m-%Y"}{/if}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="documentNr" class="col-sm-2 control-label">Nr dokument:</label>
+            <div class="col-sm-10">
+                <input {if $sessionData.author}readonly{/if} type="text" name="documentNr"  class="form-control" id="documentNr" placeholder="Nr dokument" value="{$sessionData.documentNr}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="numberNrDevices" class="col-sm-2 control-label">Ilość urządzeń:</label>
+            <div class="col-sm-10">
+                <input {if $sessionData.author}readonly{/if} type="text" name="numberNrDevices"  class="form-control" id="numberNrDevices" placeholder="Ilość nr. urządzeń" value="{$sessionData.numberNrDevices}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="numberNotes" class="col-sm-2 control-label">Ilość uwag:</label>
+            <div class="col-sm-10">
+                <input {if $sessionData.author}readonly{/if} type="text" name="numberNotes"  class="form-control" id="numberNotes" placeholder="Ilość uwag" value="{$sessionData.numberNotes}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 text-right">
+                {if !$sessionData.author}
+                <input type="submit" name="createForm" value="Przygotuj formularz">
+                {else}
+                <input  type="button"  onclick="window.location.href='index.php?controller=administration&action=resetSession'" value="Wyczyść przygotowanie formularza"></input>
+                {/if}
+            </div>
+        </div>
+        <div class="row">
+            <div>&nbsp;</div>
+        </div>
+</div>

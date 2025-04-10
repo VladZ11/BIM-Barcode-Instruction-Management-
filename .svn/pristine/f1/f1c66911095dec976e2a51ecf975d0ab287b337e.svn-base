@@ -1,0 +1,261 @@
+<?php
+
+/**
+ * @author Dariusz Bakiewicz
+ */
+
+
+/**
+ * 
+ * @brief The main controller in this project.
+ * 
+ * Class resposible for control on project.
+ * Manages request environment and determines what happens.
+ * 
+ */
+class Controllers_AdministrationControl extends W_Controller_Controller {
+	
+	/**
+	 * 
+	 * @brief The main method in the main controllers.
+	 * 
+	 * Receives input and initiates a response by making calls on model objects.
+	 * 
+	 */
+    private $validationArr = [];
+    private $savedBarcodes = [];
+    private $noSavedBarcodes = [];
+
+	public function init(){
+     //  $_SESSION["FormPrepare"] = [];
+    }
+	public function indexAction()
+	{
+        //echo print_r($_SESSION);
+
+        $this->pagec->sessionData = isset($_SESSION["FormPrepare"]) ? $_SESSION["FormPrepare"] : array();
+        $this->pagec->error = isset($_SESSION["error"]) ? $_SESSION["error"] : null;
+        $this->pagec->savedBarcodes = isset($_SESSION["savedBarcodes"]) ? $_SESSION["savedBarcodes"] : null;
+        $this->pagec->noSavedBarcodes = isset($_SESSION["noSavedBarcodes"]) ? $_SESSION["noSavedBarcodes"] : null;
+
+        //echo count($_POST["driveNumber"])."<br>";
+
+        $this->findBarcViaWpnAfterLoad();
+
+/*        echo "<pre>";
+        echo print_r($_SESSION["FormPrepare"]);
+        echo "</pre>";*/
+
+    }
+    private function removeWhitespace($variable){
+	    if($variable)
+        {
+            return preg_replace('/\s+/', '', $variable);
+        }
+        return;
+    }
+    public function findBarcViaWpnAction(){
+        $driveNumber =  $this->removeWhitespace($_POST["driveNumber"]);
+              $checkBarcodeForWpn = $this->sqlc->checkBarcodeForWpn($driveNumber);
+                $barc4 = array();
+                for($j = 0; $j < count($checkBarcodeForWpn); $j++)
+                {
+                    array_push($barc4,$checkBarcodeForWpn[$j]);
+                }
+        $this->pagec->barcs4 = $barc4;
+    }
+
+
+    private function areaTableSmt($seperate, $sqlName, $barc4, $side){
+        $n = 0;
+        $insertSql = 0;
+        //$side = $_SESSION["FormPrepare"]["side"];
+        foreach ($_POST as $key => $program)
+        {
+            if(strpos($key, $seperate))
+            {
+                $program = $this->removeWhitespace($program);
+                if($program != '')
+                {
+                    $n++;
+                    $line = explode($seperate,$key);
+                    $insertSql  += $this->sqlc->$sqlName($barc4, $side, $program, $line[0]);
+                    $n == $insertSql ? array_push($this->validationArr,"1") : array_push($this->validationArr,"0");
+                }
+            }
+        }
+    }
+
+    private function prepareNoteToSave($barc4, $driveNumber, $side){
+        if(isset($_POST["note"]))
+        {
+            $n = 0;
+            $insertNoteIM = 0;
+            for($k = 0; $k < count($_POST["note"]); $k++ )
+            {
+                $note = $_POST["note"][$k];
+                $imageComment = $_FILES["imageComment"]["name"][$k];
+                $noteCategory = $_POST["noteCategory"][$k];
+                if(!empty($imageComment))
+                {
+                    $target_file = basename($_FILES["imageComment"]["name"][$k]);
+                    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                    $imageComment = "$barc4"."_"."$driveNumber"."_".$side."_".$k."."."$imageFileType";
+                }
+
+                $n++;
+                $insertNoteIM  += $this->sqlc->insertNoteIM($barc4, $side, $note, $imageComment, $noteCategory);
+                $n == $insertNoteIM ? array_push($this->validationArr,"1") : array_push($this->validationArr,"0");
+            }
+
+            if (!in_array(0, $this->validationArr)){
+                for($l = 0; $l < count($_FILES["imageComment"]["name"]); $l++)
+                {
+                    if(!empty($_FILES["imageComment"]["name"][$l]))
+                    {
+                        //$target_dir = "upload/";
+                        //echo $_FILES["imageComment"]["name"][$l]."<br>";
+                        $target_file = basename($_FILES["imageComment"]["name"][$l]);
+                        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+                        //echo "<br><b>".$imageFileType."</b><br>";
+
+                        $ftp_server = "wplqdm3";
+                        $ftp_username = "ftpuser";
+                        $ftp_userpass = "Elektronika#1";
+                        $imgName = "$barc4"."_"."$driveNumber"."_".$side."_".$l."."."$imageFileType";
+                        $ftp_conn = ftp_connect($ftp_server) or die("Could not connect to $ftp_server");
+                        $login = ftp_login($ftp_conn, $ftp_username, $ftp_userpass);
+                        $fileRemote ="INSTRUKCJE/LOPAISMT/MONTAGE_INSTRUCTIONS_IMG/".$imgName;
+                        if (ftp_put($ftp_conn, $fileRemote , $_FILES["imageComment"]["tmp_name"][$l], FTP_BINARY)){
+                            //echo "Successfully uploaded $fileRemote.";
+                            // echo "<img src='http://wplqdm3/dokumenty/$fileRemote"."'/>";
+                        } else {
+                            echo "Error uploading $fileRemote";
+                        }
+                        ftp_close($ftp_conn);
+                    }
+                }
+                array_push($this->savedBarcodes,$barc4);
+                $this->commit();
+            }
+            else{
+                array_push($this->noSavedBarcodes,$barc4);
+                $this->rollback();
+            }
+        }
+    }
+
+    private function commit(){
+        $this->sqlc->commit();
+        $this->validationArr = [];
+        $_SESSION["error"] = 0;
+       // $this->pagec->savedBarcodes = implode(",",$this->savedBarcodes);
+        $_SESSION["savedBarcodes"] = implode(",",$this->savedBarcodes);
+        $this->resetSessionAction();
+    }
+
+    private function rollback(){
+        $this->sqlc->rollback();
+        $this->validationArr = [];
+        $_SESSION["error"] = 1;
+        //$this->pagec->noSavedBarcodes = implode(",",$this->noSavedBarcodes);
+        $_SESSION["noSavedBarcodes"] = implode(",",$this->noSavedBarcodes);
+        $this->resetSessionAction();
+    }
+    private function findBarcViaWpnAfterLoad(){
+        if(isset($_POST["driveNumber"]))
+        {
+            $_SESSION["error"] = [];
+            $_SESSION["savedBarcodes"] = [];
+            $_SESSION["noSavedBarcodes"] = [];
+
+            $dataHeader = $_SESSION["FormPrepare"];
+            $date = date('Y/m/d h:i:s', strtotime($dataHeader["date"]));
+            $post = $_POST;
+            for($i = 0; $i < count($_POST["driveNumber"]); $i++ )
+            {
+                $driveNumber = $this->removeWhitespace($_POST["driveNumber"][$i]);
+                $barc4 = $this->sqlc->checkBarcodeForWpn($driveNumber);
+                for($j = 0; $j < count($barc4); $j++)
+                {
+                    $insertHeaderIM = $this->sqlc->insertHeaderIM($barc4[$j], $dataHeader["side"], $dataHeader["documentNr"], $date, $dataHeader["author"]);
+                    if($insertHeaderIM)
+                    {
+
+                       // echo $barc4[$j];
+
+                        $insertGenInformIM = $this->sqlc->insertGenInformIM($barc4[$j],
+                                                                            $dataHeader["side"],
+                                                                            $post["name"],
+                                                                            $post["subgroup"],
+                                                                            $post["tile"],
+                                                                            $post["sieve"],
+                                                                            $post["numberTilesPanel"],
+                                                                            $post["tileWidth"],
+                                                                            $post["technology"],
+                                                                            $post["assemblyOrder"]
+                        );
+                        if($insertGenInformIM)
+                        {
+                            // Drukarka, program
+                            $this->areaTableSmt("_print_program","insertPrintProgIM", $barc4[$j], $dataHeader["side"]);
+                            // Drukarka, Rakle
+                            $this->areaTableSmt("_print_squ","insertPrintSquIM", $barc4[$j], $dataHeader["side"]);
+                            // Drukarka, Podpora
+                            $this->areaTableSmt("_print_support","insertPrintSupIM", $barc4[$j], $dataHeader["side"]);
+
+                            // Maszyna dokująca, Program
+                            $this->areaTableSmt("_machine_program","insertDockProIM", $barc4[$j], $dataHeader["side"]);
+
+                            // Maszyna dokująca, Uzbrojenie
+                            $this->areaTableSmt("_machine_arm","insertDockArmIM", $barc4[$j], $dataHeader["side"]);
+
+                            $this->prepareNoteToSave($barc4[$j],$driveNumber, $dataHeader["side"]);
+                        }
+                        else{
+                            $this->rollback();
+                        }
+                    }
+                    else{
+                        $this->rollback();
+                    }
+
+                   // echo $insertHeaderIM;
+                }
+            }
+            $_SESSION["FormPrepare"] = [];
+
+
+        }
+    }
+
+    /*                            echo "<pre>";
+                                echo print_r($_FILES);
+                                echo "</pre>";*/
+
+
+
+    /*                                                                          echo "<pre>";
+                                                        echo print_r($this->validationArr);
+                                                            echo "</pre>";
+
+                                echo "<pre>";
+                                echo print_r($_POST);
+                                echo "</pre>";*/
+
+    public function prepareAction()
+    {
+        $_SESSION["FormPrepare"] = $_POST;
+        header("Location: index.php?controller=administration&action=index");
+    }
+
+    public function resetSessionAction(){
+        $_SESSION["FormPrepare"] = null;
+        $_SESSION["error"] = null;
+        $_SESSION["savedBarcodes"] = null;
+        $_SESSION["noSavedBarcodes"] = null;
+        header("Location: index.php?controller=administration&action=index");
+    }
+
+}

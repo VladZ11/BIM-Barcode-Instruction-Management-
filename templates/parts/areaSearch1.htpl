@@ -1,0 +1,50 @@
+
+
+
+<div class="container">
+        {if $_PARAMS.status  eq 1}
+      
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-success">Moje gratulacje, usunąłeś instrukcje.</p>
+            </div>
+        </div>
+        {/if}
+    
+        <div class="row">
+            <div class="col-xs-6 barcode-information" style="padding-left: 0;">
+                <label for="barc4" class="control-label">Wybierz barkod, który chcesz skopiować:</label>
+                <input id="barc4" class="form-control text-primary" name="barc4" type="text" minlength="4" maxlength="4" placeholder="Wpisz i wybierz barkod" autocomplete="off">
+                <div id="autougester" class="hide"></div>
+                
+    
+                <div class="row">
+                    <div class="col-xs-8" >
+                        <label for="side" class="control-label">Strona:</label>
+                        <select class="form-control" id="side" name="side">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-4">
+                        <label for="devices" class="control-label">Linia:</label>
+                        <select id="devices" class="form-control text-primary" name="devices[]" {if $_PARAMS.action eq "edit"} disabled="disabled" {/if}>
+                            {section name=name loop=$devicesForMultiselect}
+                            <option value="{$devicesForMultiselect[name]}">{$devicesForMultiselect[name]}</option>
+                            {/section}
+                        </select>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-xs-6 new-barcode">
+                <label for="newbarc4" class="control-label">Wpisz nowy barkod:</label>
+                <input id="newbarc4" class="form-control text-primary" name="newbarc4" type="text" minlength="4" maxlength="4" placeholder="Wpisz nowy barkod" autocomplete="off">
+                <div id="autougester2" class="hide"></div>
+    
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    

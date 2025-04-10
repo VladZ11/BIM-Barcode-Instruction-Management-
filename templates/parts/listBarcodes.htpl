@@ -1,0 +1,10 @@
+
+<ul>
+    {section name=barc loop=$findBarcode}
+        <li class="{if $findBarcode|@count eq 1} js-one-barcode {else} js-list-barcode {/if}" data-barcode="{$findBarcode[barc]}">
+            {$findBarcode[barc]}
+        </li>
+        {sectionelse}
+        <li class="js-error">Nie ma takiego barkodu w bazie danych.</li>
+    {/section}
+</ul>

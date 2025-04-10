@@ -1,0 +1,84 @@
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        <td><strong>Linia</strong></td>
+        <td><strong>{$headerSmdMap.LINE[0]}</strong></td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Program</strong>
+        </td>
+        <td>
+            {$headerSmdMap.PROGRAM[0]}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Data i czas</strong>
+        </td>
+        <td>
+            {if $header eq 1}{$headerSmdMap.CREATE_DATE[0]}{else}{$headerSmdMap.CREATE_DATE[1]}{/if}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Długość PCB (X)</strong>
+        </td>
+        <td>
+            {$headerSmdMap.PCB_LENGTH[0]}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Szerokość  PCB (Y)</strong>
+        </td>
+        <td>
+            {$headerSmdMap.PCB_WIDTH[0]}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Grubość</strong>
+        </td>
+        <td>
+            {$headerSmdMap.THICKNESS[0]}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Strona</strong>
+        </td>
+        <td class="text-danger">
+            {if $headerSmdMap.SIDE[0] eq 1}
+                TOP
+            {else}
+                BOTTOM
+            {/if}
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <strong>Ilość komponentów</strong>
+        </td>
+        <td>
+            {if $header eq 1}{$headerSmdMap.QUANTITY_COMPONENTS[0]}{else}{$headerSmdMap.QUANTITY_COMPONENTS[1]}{/if}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>Ilość podajników</strong>
+        </td>
+        <td>
+            {if $header eq 1}{$headerSmdMap.NUMBER_FEEDERS[0]}{else}{$headerSmdMap.NUMBER_FEEDERS[1]}{/if}
+        </td>
+    </tr>
+</table>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-primary js-reservationConfirm-in-ewa" type="button">Potwierdź zamówienie</button>
+        <button class="btn btn-danger js-reservationCancel-in-ewa" type="button">Wycofaj rezerwację</button>
+    </div>
+    <div class="bg-primary col-xs-12">
+        <strong>Tabela przezbrojenia</strong>
+    </div>
+</div>

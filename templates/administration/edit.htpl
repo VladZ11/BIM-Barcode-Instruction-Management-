@@ -1,0 +1,21 @@
+<div class="container" style="clear: both;">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs error-on-page" role="tablist">
+        <li role="presentation" class="active"><a href="#othetInformation" aria-controls="othetInformation" role="tab" data-toggle="tab">Edycja instrukcji</a></li>
+    </ul>
+    <form id="editForm" autocomplete="off" action="index.php?controller=administration&action=edit" method="post" enctype="multipart/form-data">
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="othetInformation">
+                <div class="row">
+                    <div class="col-xs-12">&nbsp;</div>
+                </div>
+                {include file='parts/areaSearch.htpl'}
+                {include file='administration/editedData.htpl'}
+            </div>
+            <div>
+                <input class="pull-right" type="submit" name="saveData" value="Zapisz dane">
+            </div>
+        </div>
+    </form>
+</div>

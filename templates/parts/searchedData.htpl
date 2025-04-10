@@ -1,0 +1,326 @@
+        <div class="row">
+         
+        </div>
+        <div id="docNrContainer" class="row">
+            <div class="col-xs-4">
+                <label for="docNr" class="col-xs-12 control-label">Numer dokumentu</label>
+                <input readonly="readonly" class="form-control col-xs-12"  value="{$docNr}" placeholder="Numer dokumentu" >
+            </div>
+        
+                <div class="col-xs-4">
+                        <label for="name" class="col-xs-12 control-label">Nazwa</label>
+                        <input readonly="readonly" class="form-control col-xs-12" id="name" value="{$loadGeneralInformation.NAME_I[0]}" placeholder="Nazwa">
+                </div>
+
+                <div class="col-xs-4">
+                        <label for="numTilesInPanel" class="col-xs-12 control-label">Ilość w panelu</label>
+                        <input readonly="readonly"  class="form-control col-xs-12" id="numTilesInPanel"  data-val="{$loadGeneralInformation.NUM_TILES_IN_PANEL[0]}"  value="{$loadGeneralInformation.NUM_TILES_IN_PANEL[0]}" placeholder="Ilość w panelu">
+                </div>
+
+
+                <div class="col-xs-4">
+                        <label for="wpn" class="col-xs-12 control-label">WPN</label>
+                        <input readonly="readonly"  class="form-control col-xs-12" id="wpn"  value="{$findWpn}" placeholder="WPN">
+                </div>
+
+
+                <div class="col-xs-4">
+                        <label for="subgroup" class="col-xs-12 control-label">Podgrupa</label>
+                        <input readonly="" class="form-control col-xs-12" id="subgroup"  value="{$loadGeneralInformation.SUBGROUP[0]}" maxlength="50" placeholder="Podgrupa">
+                </div>
+
+                <div class="col-xs-4">
+                        <label for="sieve" class="col-xs-12 control-label">Nr sita</label>
+                        <input readonly="readonly" class="form-control" id="sieve"  value="{$scsInf.STENCIL_NR[0]}{if !isset($scsInf.STENCIL_IDX[0])}(-){else}{$scsInf.STENCIL_IDX[0]}{/if}"
+                        placeholder="Nr sita">
+                </div>
+                <div class="col-xs-4">
+                        <label for="tile" class="col-xs-12 control-label">Nr płytka drukowana</label>
+                        <input readonly="readonly" class="form-control" id="tile"  value="{$loadGeneralInformation.TILE[0]}" placeholder="Nr płytka drukowana">
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-xs-4">
+                        <label for="tileWidth" class="col-xs-12 control-label">Szerokość płytki</label>
+                        <input readonly="readonly" class="form-control col-xs-12" id="tileWidth"  value="{$loadGeneralInformation.WIDTH_TILES[0]}" placeholder="Szerokość płytki">
+                </div>
+                <div class="col-xs-4">
+                        <label for="technology" class="col-xs-12 control-label">Technologia</label>
+                        <input readonly="readonly" class="form-control col-xs-12" id="technology"  value="{$scsInf.PASTE_NAME[0]}" placeholder="Technologia">
+                </div>
+                <div class="col-sm-4">
+                        <label for="assembly_order" class="col-xs-12 control-label">Kolejność montażu</label>
+                        <input readonly="readonly" class="form-control col-xs-12" id="assembly_order"  value="{$loadGeneralInformation.ASSEMBLY_ORDER[0]}" placeholder="Kolejność montażu">
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-xs-6">
+                        <label for="squeegees" class="col-xs-12 control-label">Rakle</label>
+                        <input readonly="readonly" class="form-control col-xs-12" id="squeegees"  value="{$scsInf.SQUEEGEE_WIDTH[0]} mm" placeholder="Rakle">
+                </div>
+                <div class="col-xs-6">
+                        <label for="support" class="col-xs-12 control-label">Podpora</label>
+                        <input readonly="readonly" class="form-control col-xs-12" id="support"  value="{$scsInf.SUPPORT_NAME[0]}" placeholder="Podpora">
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-12" id="notice">
+                        <h2>1. Uwagi </h2>
+                        <ul>
+                            {section name=notes loop=$notes.ID_PARENT_NOTE}
+                                <li class="{if $notes.CATEGORY[notes] eq 1}
+                                        text-danger
+                                        {elseif $notes.CATEGORY[notes] eq 2}
+                                        text-success
+                                        {elseif $notes.CATEGORY[notes] eq 3}
+                                        text-primary
+                                        {elseif $notes.CATEGORY[notes] eq 4}
+                                        text-warning
+                                     {/if}"
+                                    title="{$notes.CATTEXT[notes]}"
+                                >
+                                        {*|escape:javascript|strip_tags*}
+                                        {*
+
+                                        html, htmlall, url, urlpathinfo, quotes, hex, hexentity, javascript, mail
+                                        *}
+                                <div>{$notes.NOTE[notes]}</div>
+                                {if $notes.IMG_NOTE[notes]}
+                                        <div>
+                                                <img alt="{$notes.NOTE[notes]}" title="{$notes.NOTE[notes]}" src="http://serverpath/dokumenty/instrukcje/bim/montage_instructions_img/{$notes.IMG_NOTE[notes]}">
+                                        </div>
+                                {/if}
+                                </li>
+                            {/section}
+                        </ul>
+                        <div class="row">
+                                <div class="col-xs-3 bg-danger">
+                                        Kontrolować 100%
+                                </div>
+                                <div class="col-xs-3 bg-success">
+                                        BHP
+                                </div>
+                                <div class="col-xs-3 bg-primary">
+                                        Prawidłowe ustawienie
+                                </div>
+                                <div class="col-xs-3 bg-warning">
+                                        Wkład pracy
+                                </div>
+                        </div>
+                </div>
+        </div>
+
+        <div class="row">
+                <div class="col-sm-12" id="placeMontage">
+                        <h2>2. Stanowiska montażu</h2>
+                </div>
+
+                {if isset($devices)}
+                <table class="table">
+                    <thead>
+                        <tr>
+                                <th>
+                                        Linia
+                                </th>
+                                {if $devices.selected[0] eq 1}
+                                <th>
+                                   <b>1R</b>
+                                </th>
+                                {/if}
+                                {if $devices.selected[1] eq 1}
+                                <th>
+                                        <b>2R</b>
+                                </th>
+                                {/if}
+                                {if $devices.selected[2] eq 1}
+                                <th>
+                                        <b>3R</b>
+                                </th>
+                                {/if}
+                                {if $devices.selected[3] eq 1}
+                                <th>
+                                        <b>4R</b>
+                                </th>
+                                {/if}
+                                {if $devices.selected[4] eq 1}
+                                <th>
+                                        <b>1G</b>
+                                </th>
+                                {/if}
+                                {if $devices.selected[5] eq 1}
+                                <th>
+                                        <b>2G</b>
+                                </th>
+                                {/if}
+                                {if $devices.selected[6] eq 1}
+                                <th>
+                                        <b>3G</b>
+                                </th>
+                                {/if}
+                        </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                                <td>Program do drukarki</td>
+                                {if $devices.selected[0] eq 1}
+                                <td>
+                                    {section name=line loop=$printProg.LINE}
+                                        {if $printProg.LINE[line] eq "1r"}
+                                            {$printProg.PROGRAM[line]}
+                                        {/if}
+                                    {/section}
+                                </td>
+                                {/if}
+                                {if $devices.selected[1] eq 1}
+                                <td>
+                                    {section name=line loop=$printProg.LINE}
+                                        {if $printProg.LINE[line] eq "2r"}
+                                                {$printProg.PROGRAM[line]}
+                                        {/if}
+                                    {/section}
+
+                                </td>
+                                {/if}
+                            {if $devices.selected[2] eq 1}
+                                <td>
+                                    {section name=line loop=$printProg.LINE}
+                                        {if $printProg.LINE[line] eq "3r"}
+                                            {$printProg.PROGRAM[line]}
+                                        {/if}
+                                    {/section}
+                                </td>
+                                {/if}
+                                {if $devices.selected[3] eq 1}
+                                <td>
+                                    {section name=line loop=$printProg.LINE}
+                                        {if $printProg.LINE[line] eq "4r"}
+                                            {$printProg.PROGRAM[line]}
+                                        {/if}
+                                    {/section}
+                                </td>
+                                {/if}
+                            {if $devices.selected[4] eq 1}
+                                <td>
+                                    {section name=line loop=$printProg.LINE}
+                                        {if $printProg.LINE[line] eq "1g"}
+                                            {$printProg.PROGRAM[line]}
+                                        {/if}
+                                    {/section}
+                                </td>
+                                {/if}
+                            {if $devices.selected[5] eq 1}
+                                <td>
+                                    {section name=line loop=$printProg.LINE}
+                                        {if $printProg.LINE[line] eq "2g"}
+                                            {$printProg.PROGRAM[line]}
+                                        {/if}
+                                    {/section}
+                                </td>
+                                {/if}
+                            {if $devices.selected[6] eq 1}
+                                <td>
+                                    {section name=line loop=$printProg.LINE}
+                                        {if $printProg.LINE[line] eq "3g"}
+                                            {$printProg.PROGRAM[line]}
+                                        {/if}
+                                    {/section}
+                                </td>
+                                {/if}
+                        </tr>
+
+                        <tr>
+                                <td>Program dla maszyn układających</td>
+                            {if $devices.selected[0] eq 1}
+                                <td>
+                                    {section name=line loop=$dockPro.LINE}
+                                        {if $dockPro.LINE[line] eq "1r"}
+                                            {$dockPro.PROGRAM[line]}
+                                        {/if}
+                                    {/section}
+                                </td>
+                                {/if}
+                            {if $devices.selected[1] eq 1}
+                                <td>
+                                    {section name=line loop=$dockPro.LINE}
+                                        {if $dockPro.LINE[line] eq "2r"}
+                                            {$dockPro.PROGRAM[line]}
+                                        {/if}
+                                    {/section}
+
+                                </td>
+                                {/if}
+                            {if $devices.selected[2] eq 1}
+                                <td>
+                                    {section name=line loop=$dockPro.LINE}
+                                        {if $dockPro.LINE[line] eq "3r"}
+                                            {$dockPro.PROGRAM[line]}
+                                        {/if}
+                                    {/section}
+                                </td>
+                                {/if}
+                                {if $devices.selected[3] eq 1}
+                                <td>
+                                    {section name=line loop=$dockPro.LINE}
+                                        {if $dockPro.LINE[line] eq "4r"}
+                                            {$dockPro.PROGRAM[line]}
+                                        {/if}
+                                    {/section}
+                                </td>
+                                {/if}
+                            {if $devices.selected[4] eq 1}
+                                    <td>
+                                        {section name=line loop=$dockPro.LINE}
+                                            {if $dockPro.LINE[line] eq "1g"}
+                                                {$dockPro.PROGRAM[line]}
+                                            {/if}
+                                        {/section}
+                                    </td>
+                            {/if}
+                            {if $devices.selected[5] eq 1}
+                                <td>
+                                    {section name=line loop=$dockPro.LINE}
+                                        {if $dockPro.LINE[line] eq "2g"}
+                                            {$dockPro.PROGRAM[line]}
+                                        {/if}
+                                    {/section}
+                                </td>
+                                {/if}
+                            {if $devices.selected[6] eq 1}
+                                <td>
+                                    {section name=line loop=$dockPro.LINE}
+                                        {if $dockPro.LINE[line] eq "3g"}
+                                            {$dockPro.PROGRAM[line]}
+                                        {/if}
+                                    {/section}
+                                </td>
+                                {/if}
+                        </tr>
+                </tbody>
+
+        </table>
+        {/if}
+
+</div>
+		
+		<div class="row">
+                <div class="col-sm-12" id="otherDocuments">
+                        <h2>3. Assembly plan</h2>
+                </div>
+                <div class="col-sm-12">
+                    {section name=paths loop=$pathsFiles}
+                            <a  href="http://serverpath/dokumenty/instrukcje/ap/{$barc3}/{$pathsFiles[paths]}" target="_blank" title=""> {$pathsFiles[paths]}</a>
+                    {/section}
+                </div>
+        </div>
+
+         <!-- Start maps, modules -->
+        {include file='parts/maps.htpl'}
+
+
+        
+        <div class="row">
+                <div>&nbsp;</div>
+        </div>
+        <div class="row">
+                <div>&nbsp;</div>
+        </div>

@@ -1,0 +1,60 @@
+<div class="container">
+    <form action="" method="post" class="">
+{*        <div class="row">
+            <div class="col-xs-4 barcode-information">
+                <label for="barcode" class="col-xs-12 control-label">Wybierz barkod</label>
+                <input id="barc4" class="form-control col-xs-12 text-primary" name="barc4" type="text" minlength="4" maxlength="4" placeholder="Wpisz i wybierz barkod" autocomplete="off">
+                <div id="autougester" class="hide">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <label for="side" class="col-xs-6 control-label">Strona</label>
+                <select class="form-control col-xs-6" id="side" name="side">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+        </div>*}
+        {include file='parts/areaSearch.htpl'}
+
+        <div id="searchedData">
+            {include file='parts/searchedData.htpl'}
+        </div>
+
+
+
+{*        <div class="row">
+            <div class="col-sm-12" id="listElements">
+                <h2>3. Lista elementów(po kliknięciu w wybrany przycisk poniżej pokazuje się lista elementów oraz pozycje na konkretnym module)
+                    Kliknięcie element z listy powoduje jego zamówienie w systemie EWA. Pojawiać się musi jednak czy na pewno zamówic element, aby pomyłkowo nie były zamawiane.
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                Moduł 1
+            </div>
+            <div class="col-sm-3">
+                Moduł 2
+            </div>
+            <div class="col-sm-3">
+                Moduł 3
+            </div>
+            <div class="col-sm-3">
+                Moduł 4
+            </div>
+            <div class="col-sm-3">
+                Moduł 5
+            </div>
+            <div class="col-sm-3">
+                Moduł 6
+            </div>
+            <div class="col-sm-3">
+                Moduł 7
+            </div>
+        </div>*}
+
+
+    </form>
+
+</div>

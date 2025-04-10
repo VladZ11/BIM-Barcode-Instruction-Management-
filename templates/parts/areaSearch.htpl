@@ -1,0 +1,109 @@
+<!-- <div class="row">
+    <div class="col-xs-12">
+        {if $_PARAMS.status eq 1}
+            <p class="text-success">Moje gratulacje, usunąłeś instrukcje. </p>
+        {/if}
+    </div>
+
+    <div class="col-xs-4 barcode-information">
+        <label for="barc4" class="col-xs-12 control-label">Wybierz barkod</label>
+        <input id="barc4" class="form-control col-xs-12 text-primary" name="barc4" type="text" minlength="4" maxlength="4" placeholder="Wpisz i wybierz barkod" autocomplete="off" data-history="{$barc4}">
+        <div id="autougester" class="hide"></div>
+    </div>
+
+    <div class="col-xs-4">
+        <label for="side" class="col-xs-6 control-label">Strona</label>
+        <select class="form-control col-xs-6" id="side" name="side" data-history="{$side}">
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+    </div>
+
+    <div class="col-xs-4">
+        <label for="devices" class="col-xs-12 control-label">Linia</label>
+        <select id="devices" class="form-control col-xs-12 text-primary" name="devices[]" {if $_PARAMS.action eq "edit"} disabled="disabled" {/if} data-history="{$devices}">
+            {section name=name loop=$devicesForMultiselect}
+                <option value="{$devicesForMultiselect[name]}">{$devicesForMultiselect[name]}</option>
+            {/section}
+        </select>
+    </div>
+</div> -->
+
+<!-- <div class="row">
+        <div class="col-xs-12">
+            {if $_PARAMS.status  eq 1}
+                    <p class="text-success">Moje gratulacje, usunąłeś instrukcje. </p>
+            {/if}
+        </div>
+        
+        <div class="col-xs-4 barcode-information">
+                <label for="barc4" class="col-xs-12 control-label">Wybierz barkod</label>
+                <input id="barc4" class="form-control col-xs-12 text-primary" name="barc4" type="text" minlength="4" maxlength="4" placeholder="Wpisz i wybierz barkod" autocomplete="off">
+                <div id="autougester" class="hide">
+                </div>
+                
+                
+        </div>
+        <div class="col-xs-4">
+                <label for="docNr" class="col-xs-12 control-label">Numer dokumentu</label>
+                <input id="docNr" class="form-control col-xs-12 text-primary" type="text" disabled>
+            </div>   
+        <div class="col-xs-4">
+                <label for="side" class="col-xs-6 control-label">Strona</label>
+                <select class="form-control col-xs-6" id="side" name="side">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                </select>
+        </div>
+        <div class="col-xs-4">
+                <label for="devices" class="col-xs-12 control-label">Linia</label>
+                <select id="devices" class="form-control col-xs-12 text-primary" name="devices[]" {if $_PARAMS.action eq "edit"} disabled="disabled" {/if}>
+                   {section name=name loop=$devicesForMultiselect}
+                       <option  value="{$devicesForMultiselect[name]}">{$devicesForMultiselect[name]}</option>
+                   {/section}
+                </select>
+        </div>
+</div>
+ -->
+
+ <div class="row">
+    <div class="col-xs-12">
+        {if $_PARAMS.status  eq 1}
+            <p class="text-success">Moje gratulacje, usunąłeś instrukcje. </p>
+        {elseif $_PARAMS.status eq 2}
+            <p class="text-danger">Instrukcja nie istnieje w bazie danych.</p>
+        {elseif $_PARAMS.status eq 3}
+            <p class="text-danger">Wystąpił błąd podczas usuwania instrukcji.</p>
+        {/if}
+    </div>
+    
+    <div class="col-xs-4 barcode-information">
+        <label for="barc4" class="col-xs-12 control-label">Wybierz barkod</label>
+        <input id="barc4" class="form-control col-xs-12 text-primary" name="barc4" type="text" minlength="4" maxlength="4" placeholder="Wpisz i wybierz barkod" autocomplete="off">
+        <div id="autougester" class="hide"></div>
+    </div>
+    
+    <div class="col-xs-4">
+        <label for="side" class="col-xs-6 control-label">Strona</label>
+        <select class="form-control col-xs-6" id="side" name="side">
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+    </div>
+    
+    <div class="col-xs-4">
+        <label for="devices" class="col-xs-12 control-label">Linia</label>
+        <select id="devices" class="form-control col-xs-12 text-primary" name="devices[]" {if $_PARAMS.action eq "edit"} disabled="disabled" {/if}>
+           {section name=name loop=$devicesForMultiselect}
+               <option  value="{$devicesForMultiselect[name]}">{$devicesForMultiselect[name]}</option>
+           {/section}
+        </select>
+    </div>
+
+    <!-- <div class="col-xs-4">
+            <label for="docNr" class="col-xs-12 control-label">Numer dokumentu</label>
+            <input readonly="readonly" class="form-control col-xs-12" id="docNr" value="" placeholder="Numer dokumentu">
+        </div> -->
+</div>
+
+

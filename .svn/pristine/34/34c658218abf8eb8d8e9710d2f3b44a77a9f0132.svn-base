@@ -1,0 +1,321 @@
+<div class="container" style="clear: both;">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs error-on-page" role="tablist">
+        <li role="presentation" class="active"><a href="#prepareForm" aria-controls="prepareForm" role="tab" data-toggle="tab">Przygotowanie formularza:</a></li>
+        {if $sessionData.author}
+        <li role="presentation"><a href="#numberDrivers" aria-controls="numberDrivers" role="tab" data-toggle="tab">Nr. urządzeń:</a></li>
+        <li class="tab-to-hide-when-error" role="presentation"><a href="#othetInformation" aria-controls="othetInformation" role="tab" data-toggle="tab">Inne informacje</a></li>
+        <li class="tab-to-hide-when-error" role="presentation"><a href="#place" aria-controls="place" role="tab" data-toggle="tab">Miejsce</a></li>
+        <li class="tab-to-hide-when-error" role="presentation"><a href="#comment" aria-controls="comment" role="tab" data-toggle="tab">Uwagi/Zapisz</a></li>
+        {/if}
+    </ul>
+
+    <form autocomplete="off" action="{if $sessionData.author}index.php?controller=administration&action=index{else}index.php?controller=administration&action=prepare{/if}" method="post" class="form-horizontal" enctype="multipart/form-data">
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="prepareForm">
+                <div class="row">
+                    <div class="col-xs-12">&nbsp;</div>
+                </div>
+                {include file="administration\prepare.htpl"}
+            </div>
+            {if $sessionData.author}
+                <div role="tabpanel" class="tab-pane" id="numberDrivers">
+                    <div class="row">
+                        <div class="col-xs-12">&nbsp;</div>
+                    </div>
+                    {section name=nrDriver loop=$sessionData.numberNrDevices}
+                        <div class="form-group">
+                            <label for="driveNumber_{$smarty.section.nrDriver.index}" class="col-sm-2 control-label">Nr. urządzenia {$smarty.section.nrDriver.index+1}</label>
+                            <div class="col-sm-10">
+                                <input  type="text" name="driveNumber[]" class="form-control" id="driveNumber_{$smarty.section.nrDriver.index}" data-idEl = "{$smarty.section.nrDriver.index}" placeholder="Nr. urządzenia {$smarty.section.nrDriver.index+1}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="driveNumber_{$smarty.section.nrDriver.index}" class="col-sm-2 control-label">Przypisane barkody {$smarty.section.nrDriver.index+1}</label>
+                            <div class="col-sm-10">
+                                <input  type="text"  class="form-control" id="barcodeNumber_{$smarty.section.nrDriver.index}" placeholder="Przypisane barkody {$smarty.section.nrDriver.index+1}">
+                            </div>
+                        </div>
+                    {/section}
+                </div>
+                <div role="tabpanel" class="tab-pane" id="othetInformation">
+                    <div class="row">
+                        <div class="col-xs-12">&nbsp;</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Nazwa:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name"  class="form-control" id="name" placeholder="Nazwa">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subgroup" class="col-sm-2 control-label">Podgrupa:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="subgroup"  class="form-control" id="subgroup" placeholder="Podgrupa">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tile" class="col-sm-2 control-label">Płytka drukowana:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="tile"  class="form-control" id="tile" placeholder="Płytka drukowana">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sieve" class="col-sm-2 control-label">Sito:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="sieve"  class="form-control" id="sieve" placeholder="Sito">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="numberTilesPanel" class="col-sm-2 control-label">Ilość płytek w panelu:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="numberTilesPanel"  class="form-control" id="numberTilesPanel" placeholder="Ilość płytek w panelu">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tileWidth" class="col-sm-2 control-label">Szerokość płytki:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="tileWidth"  class="form-control" id="tileWidth" placeholder="Szerokość płytki">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="technology" class="col-sm-2 control-label">Technologia:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="technology"  class="form-control" id="technology" placeholder="Technologia">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assemblyOrder" class="col-sm-2 control-label">Kolejność montażu:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="assemblyOrder"  class="form-control" id="assemblyOrder" placeholder="Kolejność montażu">
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="place">
+                    <div class="row">
+                        <div class="col-xs-12">&nbsp;</div>
+                    </div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>
+
+                            </th>
+                            <th>
+
+                            </th>
+                            <th>
+                                <b>WPL1R</b>
+                            </th>
+                            <th>
+                                <b>WPL1G</b>
+                            </th>
+                            <th>
+                                <b>WPL2R</b>
+                            </th>
+                            <th>
+                                <b>WPL2G</b>
+                            </th>
+                            <th>
+                                <b>WPL3R</b>
+                            </th>
+                            <th>
+                                <b>WPL3G</b>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr>
+                            <td rowspan="4">
+                                <b>Drukarka</b>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b>Program</b>
+                            </td>
+                            <td>
+                                <input type="text" name="wpl1r_print_program"  class="form-control" id="wpl1r_print_program" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl1g_print_program"  class="form-control" id="wpl1g_print_program" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl2r_print_program"  class="form-control" id="wpl2r_print_program" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl2g_print_program"  class="form-control" id="wpl2g_print_program" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl3r_print_program"  class="form-control" id="wpl3r_print_program" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl3g_print_program"  class="form-control" id="wpl3g_print_program" placeholder="Program">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Rakle</b>
+                            </td>
+                            <td>
+                                <input type="text" name="wpl1r_print_squ"  class="form-control" id="wpl1r_print_squ" placeholder="Rakle">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl1g_print_squ"  class="form-control" id="wpl1g_print_squ" placeholder="Rakle">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl2r_print_squ"  class="form-control" id="wpl2r_print_squ" placeholder="Rakle">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl2g_print_squ"  class="form-control" id="wpl2g_print_squ" placeholder="Rakle">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl3r_print_squ"  class="form-control" id="wpl3r_print_squ" placeholder="Rakle">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl3g_print_squ"  class="form-control" id="wpl3g_print_squ" placeholder="Rakle">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Podpora</b>
+                            </td>
+                            <td>
+                                <input type="text" name="wpl1r_print_support"  class="form-control" id="wpl1r_print_support" placeholder="Podpora">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl1g_print_support"  class="form-control" id="wpl1g_print_support" placeholder="Podpora">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl2r_print_support"  class="form-control" id="wpl2r_print_support" placeholder="Podpora">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl2g_print_support"  class="form-control" id="wpl2g_print_support" placeholder="Podpora">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl3r_print_support"  class="form-control" id="wpl3r_print_support" placeholder="Podpora">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl3g_print_support"  class="form-control" id="wpl3g_print_support" placeholder="Podpora">
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td rowspan="3">
+                                <b>Maszyna dokująca</b>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b>Program</b>
+                            </td>
+                            <td>
+                                <input type="text" name="wpl1r_machine_program"  class="form-control" id="wpl1r_machine_program" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl1g_machine_program"  class="form-control" id="wpl1g_machine_program" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl2r_machine_program"  class="form-control" id="wpl2r_machine_program" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl2g_machine_program"  class="form-control" id="wpl2g_machine_program" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl3r_machine_program"  class="form-control" id="wpl3r_machine_program" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl3g_machine_program"  class="form-control" id="wpl3g_machine_program" placeholder="Program">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Uzbrojenie</b>
+                            </td>
+                            <td>
+                                <input type="text" name="wpl1r_machine_arm"  class="form-control" id="wpl1r_machine_arm" placeholder="Rakle">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl1g_machine_arm"  class="form-control" id="wpl1g_machine_arm" placeholder="Rakle">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl2r_machine_arm"  class="form-control" id="wpl2r_machine_arm" placeholder="Rakle">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl2g_machine_arm"  class="form-control" id="wpl2g_machine_arm" placeholder="Rakle">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl3r_machine_arm"  class="form-control" id="wpl3r_machine_arm" placeholder="Rakle">
+                            </td>
+                            <td>
+                                <input type="text" name="wpl3g_machine_arm"  class="form-control" id="wpl3g_machine_arm" placeholder="Rakle">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="comment">
+                    <div class="row">
+                        <div class="col-xs-12">&nbsp;</div>
+                    </div>
+                    {section name=note loop=$sessionData.numberNotes}
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <label for="noteCategory_{$smarty.section.note.index}">Kategoria uwagi {$smarty.section.note.index+1}</label>
+                                </td>
+                                <td>
+                                    <select name="noteCategory[]" id="noteCategory_{$smarty.section.note.index}" class="width-100-pr">
+                                        <option value="0">Wybierz kategorie</option>
+                                        <option value="1">[Czerwony] Kontrolować na 100%</option>
+                                        <option value="2">[Zielony] BHP</option>
+                                        <option value="3">[Niebieski] Prawidłowe ustawienie</option>
+                                        <option value="4">[Żółty] Wkład pracy</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="note_{$smarty.section.note.index}">Wprowadź uwagę, {$smarty.section.note.index+1}</label>
+                                </td>
+                                <td>
+                                    <textarea id="note_{$smarty.section.note.index}" name="note[]" class="width-100-pr"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="imageNote_{$smarty.section.note.index}">Obrazek do uwagi [png,jpeg] {$smarty.section.note.index+1}</label>
+                                </td>
+                                <td>
+                                    <input type="file" id="imageNote_{$smarty.section.note.index}" name="imageComment[]" accept="image/png, image/jpeg">
+                                </td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <hr>
+
+                    {/section}
+
+                    <div class="row">
+                        <div class="col-xs-12 text-right">
+                            <input type="submit" name="dataToSend" id="dataToSend" value="Zapisz">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p><br><br></p>
+                        </div>
+                    </div>
+                </div>
+            {/if}
+        </div>
+</form>
+</div>

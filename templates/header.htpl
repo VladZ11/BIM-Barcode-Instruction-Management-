@@ -1,0 +1,25 @@
+<header>
+	<div id="header">
+		<div class="col-sm-8">
+			<div id="headerWrapInside">
+				<h1><a href="index.php?controller=index&action=index"><strong>{$appName}</strong></a></h1>
+			</div>
+		</div>
+		
+		<div class="col-sm-4" style="padding-top: 31px; text-align: right">
+			{if $userRole eq "ADMIN"}
+				<a href="index.php?controller=administration&action=confNotices">Konfiguracja uwag</a> |
+				<a href="index.php?controller=administration&action=edit">Edytuj instrukcje</a> |
+				<a href="index.php?controller=administration&action=index">Dodaj instrukcje</a> |<br>
+				<a href="index.php?controller=administration&action=delete">Usuń instrukcje</a> |
+				<a href="index.php?controller=administration&action=Copy">Utwórz kopię instrukcji</a> |<br>
+				<a href="index.php?controller=administration&action=history">Historia zmian w instrukcjach</a> | 
+				<a href="index.php?controller=index&action=index">Formularz wyszukiwania</a>
+		
+			{/if}
+			<br><b>Użytkownik:</b>	{$userName} {$userLastName}({$userRole})
+			<input type="hidden" id="userName" value="{$userName}">
+            <input type="hidden" id="userLastName" value="{$userLastName}">
+		</div>
+	</div>
+</header>

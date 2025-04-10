@@ -1,0 +1,311 @@
+<div class="container" style="clear: both;">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs error-on-page" role="tablist">
+        <li role="presentation" class="active"><a href="#prepareForm" aria-controls="prepareForm" role="tab" data-toggle="tab">Przygotowanie formularza:</a></li>
+        {if $sessionData.author}
+        <li role="presentation"><a href="#numberDrivers" aria-controls="numberDrivers" role="tab" data-toggle="tab">Nr. urządzeń:</a></li>
+        <li class="tab-to-hide-when-error" role="presentation"><a href="#othetInformation" aria-controls="othetInformation" role="tab" data-toggle="tab">Inne informacje</a></li>
+        <li class="tab-to-hide-when-error" role="presentation"><a href="#comment" aria-controls="comment" role="tab" data-toggle="tab">Uwagi/Zapisz</a></li>
+        {/if}
+    </ul>
+
+    <form autocomplete="off" action="{if $sessionData.author}index.php?controller=administration&action=index{else}index.php?controller=administration&action=prepare{/if}" method="post" class="form-horizontal" enctype="multipart/form-data">
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="prepareForm">
+                <div class="row">
+                    <div class="col-xs-12">&nbsp;</div>
+                </div>
+                {include file="administration\prepare.htpl"}
+            </div>
+            {if $sessionData.author}
+                <div role="tabpanel" class="tab-pane" id="numberDrivers">
+                    <div class="row">
+                        <div class="col-xs-12">&nbsp;</div>
+                    </div>
+                    {section name=nrDriver loop=$sessionData.numberNrDevices}
+                        <div class="form-group">
+                            <label for="driveNumber_{$smarty.section.nrDriver.index}" class="col-sm-2 control-label">Nr. urządzenia {$smarty.section.nrDriver.index+1}</label>
+                            <div class="col-sm-10">
+                                <input  type="text" name="driveNumber[]" class="form-control" id="driveNumber_{$smarty.section.nrDriver.index}" data-idEl = "{$smarty.section.nrDriver.index}" placeholder="Nr. urządzenia {$smarty.section.nrDriver.index+1}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="driveNumber_{$smarty.section.nrDriver.index}" class="col-sm-2 control-label">Przypisane barkody {$smarty.section.nrDriver.index+1}</label>
+                            <div class="col-sm-10">
+                                <input  type="text"  class="form-control" id="barcodeNumber_{$smarty.section.nrDriver.index}" placeholder="Przypisane barkody {$smarty.section.nrDriver.index+1}">
+                            </div>
+                        </div>
+                    {/section}
+                </div>
+                <div role="tabpanel" class="tab-pane" id="othetInformation">
+                    <div class="row">
+                        <div class="col-xs-12">&nbsp;</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Nazwa:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name"  class="form-control" id="name" placeholder="Nazwa">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subgroup" class="col-sm-2 control-label">Podgrupa:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="subgroup"  class="form-control" id="subgroup" placeholder="Podgrupa">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tile" class="col-sm-2 control-label">Płytka drukowana:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="tile"  class="form-control" id="tile" placeholder="Płytka drukowana">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="numberTilesPanel" class="col-sm-2 control-label">Ilość płytek w panelu:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="numberTilesPanel"  class="form-control" id="numberTilesPanel" placeholder="Ilość płytek w panelu">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tileWidth" class="col-sm-2 control-label">Szerokość płytki:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="tileWidth"  class="form-control" id="tileWidth" placeholder="Szerokość płytki">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assemblyOrder" class="col-sm-2 control-label">Kolejność montażu:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="assemblyOrder"  class="form-control" id="assemblyOrder" placeholder="Kolejność montażu">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="print_prog" class="col-sm-2 control-label">Program do drukarki</label>
+                        <div class="col-sm-10">
+                            <input  type="text" name="print_prog" class="form-control " id="print_prog"   placeholder="Program do drukarki">
+                        </div>
+                    </div>
+<!-- 
+                    <div class="form-group">
+                        <label for="print_prog" class="col-sm-2 control-label">Wskaż gdzie program?</label>
+                        <div class="col-sm-10">
+                            <label for="program_1R">
+                                1R
+                                <input type="checkbox" id="print_program_1R" name="print_program_1r">
+                            </label>
+                            <label for="program_2R">
+                                2R
+                                <input type="checkbox" id="print_program_2R" name="print_program_2r">
+                            </label>
+                            <label for="program_3R">
+                                3R
+                                <input type="checkbox" id="print_program_3R" name="print_program_3r">
+                            </label>
+                            <label for="program_1G">
+                                1G
+                                <input type="checkbox" id="print_program_1G" name="print_program_1g">
+                            </label>
+                            <label for="program_2G">
+                                2G
+                                <input type="checkbox" id="print_program_2G" name="print_program_2g">
+                            </label>
+                            <label for="program_3G">
+                                3G
+                                <input type="checkbox" id="print_program_3G" name="print_program_3g">
+                            </label>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Wskaż gdzie program?</label>
+                        <div class="col-sm-10">
+                            <div>
+                                <div>1R</div>
+                                <label for="print_program_1R">
+                                    <input type="checkbox" id="print_program_1R" name="print_program_1r"> 1R
+                                </label>
+                            </div>
+                            <div>
+                                <div>2R</div>
+                                <label for="print_program_2R">
+                                    <input type="checkbox" id="print_program_2R" name="print_program_2r"> 2R
+                                </label>
+                            </div>
+                            <div>
+                                <div>3R</div>
+                                <label for="print_program_3R">
+                                    <input type="checkbox" id="print_program_3R" name="print_program_3r"> 3R
+                                </label>
+                            </div>
+                            <div>
+                                <div>4R</div>
+                                <label for="print_program_4R">
+                                    <input type="checkbox" id="print_program_4R" name="print_program_4r"> 4R
+                                </label>
+                            </div>
+                            <div>
+                                <div>1G</div>
+                                <label for="print_program_1G">
+                                    <input type="checkbox" id="print_program_1G" name="print_program_1g"> 1G
+                                </label>
+                            </div>
+                            <div>
+                                <div>2G</div>
+                                <label for="print_program_2G">
+                                    <input type="checkbox" id="print_program_2G" name="print_program_2g"> 2G
+                                </label>
+                            </div>
+                            <div>
+                                <div>3G</div>
+                                <label for="print_program_3G">
+                                    <input type="checkbox" id="print_program_3G" name="print_program_3g"> 3G
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>
+
+                            </th>
+                            <th>
+
+                            </th>
+                            <th>
+                                <b>1R</b>
+                            </th>
+                            <th>
+                                <b>2R</b>
+                            </th>
+                            <th>
+                                <b>3R</b>
+                            </th>
+                            <th>
+                                <b>4R</b>
+                            </th>
+                            <th>
+                                <b>1G</b>
+                            </th>
+                            <th>
+                                <b>2G</b>
+                            </th>
+                            <th>
+                                <b>3G</b>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr>
+                            <td rowspan="3">
+                                <b>Maszyna układająca</b>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <b>Program</b>
+                            </td>
+                            <td>
+                                <input type="text" name="machine_program_1r"  class="form-control" id="machine_program_1r" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="machine_program_2r"  class="form-control" id="machine_program_2r" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="machine_program_3r"  class="form-control" id="machine_program_3r" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="machine_program_4r"  class="form-control" id="machine_program_4r" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="machine_program_1g"  class="form-control" id="machine_program_1g" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="machine_program_2g"  class="form-control" id="machine_program_2g" placeholder="Program">
+                            </td>
+                            <td>
+                                <input type="text" name="machine_program_3g"  class="form-control" id="machine_program_3g" placeholder="Program">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="comment">
+                    <div class="row">
+                        <div class="col-xs-12">&nbsp;</div>
+                    </div>
+                    {section name=note loop=$sessionData.numberNotes}
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <label for="note_nr_{$smarty.section.note.index}">Wybierz uwagę, {$smarty.section.note.index+1}</label>
+                                </td>
+                                <td>
+                                    <select id="note_{$smarty.section.note.index}" name="note[]">
+                                        <option value="0">Wybierz uwagę</option>
+                                        {section name=getTypicalNotes loop=$getTypicalNotes.NOTE}
+                                            <option value="{$getTypicalNotes.ID_COMMENT[getTypicalNotes]}">
+                                                [{$getTypicalNotes.CATEGORY[getTypicalNotes]}] [{$getTypicalNotes.COLOR[getTypicalNotes]}] {$getTypicalNotes.NOTE[getTypicalNotes]}
+                                            </option>
+                                        {/section}
+                                    </select>
+                                </td>
+                            </tr>
+{*                            <tr>
+                                <td>
+                                    <label for="noteCategory_{$smarty.section.note.index}">Kategoria uwagi {$smarty.section.note.index+1}</label>
+                                </td>
+                                <td>
+                                    <select name="noteCategory[]" id="noteCategory_{$smarty.section.note.index}" class="width-100-pr">
+                                        <option value="0">Wybierz kategorie</option>
+                                        <option value="1">[Czerwony] Kontrolować na 100%</option>
+                                        <option value="2">[Zielony] BHP</option>
+                                        <option value="3">[Niebieski] Prawidłowe ustawienie</option>
+                                        <option value="4">[Żółty] Wkład pracy</option>
+                                    </select>
+                                </td>
+                            </tr>*}
+  {*                          <tr>
+                                <td>
+                                    <label for="note_{$smarty.section.note.index}">Wprowadź uwagę, {$smarty.section.note.index+1}</label>
+                                </td>
+                                <td>
+                                    <textarea id="note_{$smarty.section.note.index}" name="note[]" class="width-100-pr"></textarea>
+                                </td>
+                            </tr>*}
+                            <tr>
+                                <td>
+                                    <label for="imageNote_{$smarty.section.note.index}">Obrazek do uwagi [png,jpeg] {$smarty.section.note.index+1}</label>
+                                </td>
+                                <td>
+                                    <input type="file" id="imageNote_{$smarty.section.note.index}" name="imageComment[]" accept="image/png, image/jpeg">
+                                </td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <hr>
+
+                    {/section}
+
+                    <div class="row">
+                        <div class="col-xs-12 text-right">
+                            <input type="submit" name="dataToSend" id="dataToSend" value="Zapisz">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p><br><br></p>
+                        </div>
+                    </div>
+                </div>
+            {/if}
+        </div>
+</form>
+</div>

@@ -1,0 +1,55 @@
+<div class="row">
+        <div class="col-sm-12" id="otherDocuments">
+                <h2>4. Mapka przezbrojenia NXT</h2>
+        </div>
+
+        <!-- Tab nav top -->
+        <ul class="nav nav-tabs error-on-page" role="tablist">
+            {if isset($m1)}
+                <li role="presentation" class="active"><a href="#m1" aria-controls="m1" role="tab" data-toggle="tab">M1</a></li>
+            {/if}
+            {if isset($m2)}
+                <li role="presentation"><a href="#m2" aria-controls="m2" role="tab" data-toggle="tab">M2</a></li>
+             {/if}
+            {if isset($m3)}
+                <li role="presentation"><a href="#m3" aria-controls="m3" role="tab" data-toggle="tab">M3</a></li>
+            {/if}
+            {if isset($m4)}
+                <li role="presentation"><a href="#m4" aria-controls="m4" role="tab" data-toggle="tab">M4</a></li>
+            {/if}
+            {if isset($m5)}
+                <li role="presentation"><a href="#m5" aria-controls="m5" role="tab" data-toggle="tab">M5</a></li>
+             {/if}
+            {if isset($m6)}
+                <li role="presentation"><a href="#m6" aria-controls="m6" role="tab" data-toggle="tab">M6</a></li>
+            {/if}
+            {if isset($m7)}
+                <li role="presentation"><a href="#m7" aria-controls="m7" role="tab" data-toggle="tab">M7</a></li>
+            {/if}
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+                {if isset($m1)}
+                    {include file='parts/module.htpl' module = $m1 idModule="1" header=1 active=1}
+                {/if}
+                {if isset($m2)}
+                        {include file='parts/module.htpl' module = $m2 idModule="2" header=1 active=0}
+                {/if}
+                {if isset($m3)}
+                        {include file='parts/module.htpl' module = $m3 idModule="3" header=2 active=0}
+                {/if}
+                {if isset($m4)}
+                        {include file='parts/module.htpl' module = $m4 idModule="4" header=2 active=0}
+                {/if}
+                {if isset($m5)}
+                        {include file='parts/module.htpl' module = $m5 idModule="5" header=2 active=0}
+                {/if}
+                {if isset($m6)}
+                        {include file='parts/module.htpl' module = $m6 idModule="6" header=2 active=0}
+                {/if}
+                {if isset($m7)}
+                        {include file='parts/module.htpl' module = $m7 idModule="7" header=2 active=0}
+                {/if}
+        </div>
+</div>

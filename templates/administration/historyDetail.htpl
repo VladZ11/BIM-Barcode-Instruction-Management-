@@ -1,0 +1,250 @@
+<div id="searchedData">
+    <div class="row">
+        <!-- Поле BARC4 -->
+        <div class="col-xs-4 barcode-information">
+            <label for="barcode" class="col-xs-12 control-label">Barkod płytki</label>
+            {assign var="fieldName" value="BARC4"}
+            {assign var="currentValue" value=$historyRecord[$fieldName]}
+            {assign var="previousValue" value=$previousRecord[$fieldName]|default:''}
+            {if $previousValue neq '' && $currentValue neq $previousValue}
+                <input name="barcode" class="form-control col-xs-12 text-danger" id="barcode" value="{$currentValue}" readonly="readonly" title="Poprzednia wartość: {$previousValue}">
+            {else}
+                <input name="barcode" class="form-control col-xs-12" id="barcode" value="{$currentValue}" readonly="readonly">
+            {/if}
+        </div>
+
+        <!-- Поле SIDE -->
+        <div class="col-xs-4">
+            <label for="side" class="col-xs-6 control-label">Strona</label>
+            {assign var="fieldName" value="SIDE"}
+            {assign var="currentValue" value=$historyRecord[$fieldName]}
+            {assign var="previousValue" value=$previousRecord[$fieldName]|default:''}
+            {if $previousValue neq '' && $currentValue neq $previousValue}
+                <input name="side" class="form-control col-xs-12 text-danger" id="side" value="{$currentValue}" readonly="readonly" title="Poprzednia wartość: {$previousValue}">
+            {else}
+                <input name="side" class="form-control col-xs-12" id="side" value="{$currentValue}" readonly="readonly">
+            {/if}
+        </div>
+
+        <!-- Поле AUTHOR -->
+        <div class="col-xs-4">
+            <label for="author" class="col-xs-6 control-label">Autor</label>
+            {assign var="fieldName" value="AUTHOR"}
+            {assign var="currentValue" value=$historyRecord[$fieldName]}
+            {assign var="previousValue" value=$previousRecord[$fieldName]|default:''}
+            {if $previousValue neq '' && $currentValue neq $previousValue}
+                <input name="author" class="form-control col-xs-12 text-danger" id="author" value="{$currentValue}" readonly="readonly" title="Poprzednia wartość: {$previousValue}">
+            {else}
+                <input name="author" class="form-control col-xs-12" id="author" value="{$currentValue}" readonly="readonly">
+            {/if}
+        </div>
+
+        <!-- Поле NAME_I -->
+        <div class="col-xs-4">
+            <label for="name" class="col-xs-12 control-label">Nazwa</label>
+            {assign var="fieldName" value="NAME_I"}
+            {assign var="currentValue" value=$historyRecord[$fieldName]}
+            {assign var="previousValue" value=$previousRecord[$fieldName]|default:''}
+            {if $previousValue neq '' && $currentValue neq $previousValue}
+                <input name="name" class="form-control col-xs-12 text-danger" id="name" value="{$currentValue}" readonly="readonly" title="Poprzednia wartość: {$previousValue}">
+            {else}
+                <input name="name" class="form-control col-xs-12" id="name" value="{$currentValue}" readonly="readonly">
+            {/if}
+        </div>
+
+        <!-- Поле NUM_TILES_IN_PANEL -->
+        <div class="col-xs-4">
+            <label for="numTilesInPanel" class="col-xs-12 control-label">Ilość w panelu</label>
+            {assign var="fieldName" value="NUM_TILES_IN_PANEL"}
+            {assign var="currentValue" value=$historyRecord[$fieldName]}
+            {assign var="previousValue" value=$previousRecord[$fieldName]|default:''}
+            {if $previousValue neq '' && $currentValue neq $previousValue}
+                <input name="numTilesInPanel" class="form-control col-xs-12 text-danger" id="numTilesInPanel" value="{$currentValue}" readonly="readonly" title="Poprzednia wartość: {$previousValue}">
+            {else}
+                <input name="numTilesInPanel" class="form-control col-xs-12" id="numTilesInPanel" value="{$currentValue}" readonly="readonly">
+            {/if}
+        </div>
+
+        <!-- Поле WPN -->
+        <div class="col-xs-4">
+            <label for="wpn" class="col-xs-12 control-label">WPN</label>
+            {assign var="fieldName" value="WPN"}
+            {assign var="currentValue" value=$historyRecord[$fieldName]}
+            {assign var="previousValue" value=$previousRecord[$fieldName]|default:''}
+            {if $previousValue neq '' && $currentValue neq $previousValue}
+                <input name="wpn" class="form-control col-xs-12 text-danger" id="wpn" value="{$currentValue}" readonly="readonly" title="Poprzednia wartość: {$previousValue}">
+            {else}
+                <input name="wpn" class="form-control col-xs-12" id="wpn" value="{$currentValue}" readonly="readonly">
+            {/if}
+        </div>
+
+        <!-- Поле SUBGROUP -->
+        <div class="col-xs-4">
+            <label for="subgroup" class="col-xs-12 control-label">Podgrupa</label>
+            {assign var="fieldName" value="SUBGROUP"}
+            {assign var="currentValue" value=$historyRecord[$fieldName]}
+            {assign var="previousValue" value=$previousRecord[$fieldName]|default:''}
+            {if $previousValue neq '' && $currentValue neq $previousValue}
+                <input name="subgroup" class="form-control col-xs-12 text-danger" id="subgroup" value="{$currentValue}" readonly="readonly" title="Poprzednia wartość: {$previousValue}">
+            {else}
+                <input name="subgroup" class="form-control col-xs-12" id="subgroup" value="{$currentValue}" readonly="readonly">
+            {/if}
+        </div>
+
+        <!-- Поле TILE -->
+        <div class="col-xs-4">
+            <label for="tile" class="col-xs-12 control-label">Nr płytka drukowana</label>
+            {assign var="fieldName" value="TILE"}
+            {assign var="currentValue" value=$historyRecord[$fieldName]}
+            {assign var="previousValue" value=$previousRecord[$fieldName]|default:''}
+            {if $previousValue neq '' && $currentValue neq $previousValue}
+                <input name="tile" class="form-control text-danger" id="tile" value="{$currentValue}" readonly="readonly" title="Poprzednia wartość: {$previousValue}">
+            {else}
+                <input name="tile" class="form-control" id="tile" value="{$currentValue}" readonly="readonly">
+            {/if}
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Поле WIDTH_TILES -->
+        <div class="col-xs-4">
+            <label for="tileWidth" class="col-xs-12 control-label">Szerokość płytki</label>
+            {assign var="fieldName" value="WIDTH_TILES"}
+            {assign var="currentValue" value=$historyRecord[$fieldName]}
+            {assign var="previousValue" value=$previousRecord[$fieldName]|default:''}
+            {if $previousValue neq '' && $currentValue neq $previousValue}
+                <input name="tileWidth" class="form-control col-xs-12 text-danger" id="tileWidth" value="{$currentValue}" readonly="readonly" title="Poprzednia wartość: {$previousValue}">
+            {else}
+                <input name="tileWidth" class="form-control col-xs-12" id="tileWidth" value="{$currentValue}" readonly="readonly">
+            {/if}
+        </div>
+
+        <!-- Поле ASSEMBLY_ORDER -->
+        <div class="col-sm-4">
+            <label for="assembly_order" class="col-xs-12 control-label">Kolejność montażу</label>
+            {assign var="fieldName" value="ASSEMBLY_ORDER"}
+            {assign var="currentValue" value=$historyRecord[$fieldName]}
+            {assign var="previousValue" value=$previousRecord[$fieldName]|default:''}
+            {if $previousValue neq '' && $currentValue neq $previousValue}
+                <input name="assembly_order" class="form-control col-xs-12 text-danger" id="assembly_order" value="{$currentValue}" readonly="readonly" title="Poprzednia wartość: {$previousValue}">
+            {else}
+                <input name="assembly_order" class="form-control col-xs-12" id="assembly_order" value="{$currentValue}" readonly="readonly">
+            {/if}
+        </div>
+    </div>
+
+    <!-- Чекбоксы для линий -->
+    <div class="col-xs-12">
+        <label class="col-xs-12 control-label">Wskaż gdzie program?</label>
+        {section name=lineDev loop=$devices.name}
+            {assign var="lineName" value=$devices.name[lineDev]|upper}
+            {assign var="machineProgramField" value="MACHINE_PROGRAM_"|cat:$lineName}
+            {assign var="currentValue" value=$historyRecord[$machineProgramField]|default:''}
+            {assign var="previousValue" value=$previousRecord[$machineProgramField]|default:''}
+            {if $currentValue neq ''}
+                {if $previousValue neq '' && $currentValue neq $previousValue}
+                    <label class="copy-label text-danger" title="Poprzednia wartość: {$previousValue}">
+                        {$devices.name[lineDev]}
+                        <input type="checkbox" checked="checked" disabled="disabled">
+                    </label>
+                {else}
+                    <label class="copy-label">
+                        {$devices.name[lineDev]}
+                        <input type="checkbox" checked="checked" disabled="disabled">
+                    </label>
+                {/if}
+                <!-- Добавляем скрытый чекбокс, чтобы JavaScript не сбрасывал значение -->
+                <input type="checkbox" name="print_program_{$devices.name[lineDev]}" checked="checked" style="display: none;">
+            {else}
+                <label class="copy-label">
+                    {$devices.name[lineDev]}
+                    <input type="checkbox" disabled="disabled">
+                </label>
+                <!-- Добавляем скрытый чекбокс, чтобы JavaScript не сбрасывал значение -->
+                <input type="checkbox" name="print_program_{$devices.name[lineDev]}" style="display: none;">
+            {/if}
+        {/section}
+    </div>
+
+    <!-- Заметки -->
+    <div class="row">
+        <div class="col-sm-12" id="notice">
+            <h2>1. Uwagi</h2>
+            <ul>
+                {foreach from=$notes item=note}
+                    <li class="{if $note.CATEGORY == '1'} text-danger {elseif $note.CATEGORY == '2'} text-success {elseif $note.CATEGORY == '3'} text-primary {elseif $note.CATEGORY == '4'} text-warning {/if} margin-bottom-15"
+                        title="{$note.CAT_TEXT}">
+                        <div>
+                            <select class="form-control" name="notes[]" disabled="disabled">
+                                <option value="0">Wybierz uwagę</option>
+                                {foreach from=$getTypicalNotes item=getNote}
+                                    <option {if $getNote.ID_COMMENT == $note.ID_PARENT_NOTE} selected="selected" {/if} value="{$getNote.ID_COMMENT}" data-history="{$getNote.ID_COMMENT}">
+                                        [{$getNote.CATEGORY}] [{$getNote.COLOR}] {$getNote.NOTE}
+                                    </option>
+                                {/foreach}
+                            </select>
+                            <input type="hidden" name="id[]" value="{$note.ID_NOTE}" data-history="{$note.ID_NOTE}">
+                        </div>
+                        {if $note.IMG_NOTE}
+                            <div class="position-relative js-image-{$note.ID_NOTE}">
+                                <img alt="{$note.NOTE}" title="{$note.NOTE}" src="http://wrcv31231.zf-world.com/dokumenty/instrukcje/bim/montage_instructions_img/{$note.IMG_NOTE}">
+                            </div>
+                        {else}
+                            <div class="position-relative js-image-{$note.ID_NOTE}">
+                                <p>Brak obrazka</p>
+                            </div>
+                        {/if}
+                    </li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Redesigned machine programs section to properly display values -->
+    <div class="row">
+        <div class="col-sm-12" id="placeMontage">
+            <h2>2. Stanowiska montażu</h2>
+        </div>
+    
+        {if isset($devices)}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Program</th>
+                        {section name=lineDev loop=$devices.name}
+                            <th><b>{$devices.name[lineDev]}</b></th>
+                        {/section}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Program dla maszyn układających</strong></td>
+                        {section name=lineDev loop=$devices.name}
+                            <td>
+                                {* Формируем имя устройства в верхнем регистре *}
+                                {assign var="deviceName" value=$devices.name[lineDev]|upper}
+                                {* Формируем ключ для доступа к данным, например, MACHINE_PROGRAM_1R *}
+                                {assign var="fieldName" value="MACHINE_PROGRAM_"|cat:$deviceName}
+                                {* Проверяем, есть ли значение в $historyRecord *}
+                                {if isset($historyRecord[$fieldName]) && $historyRecord[$fieldName] neq ''}
+                                    {assign var="currentValue" value=$historyRecord[$fieldName]}
+                                    {* Проверяем, есть ли предыдущее значение и отличается ли оно *}
+                                    {assign var="previousValue" value=$previousRecord[$fieldName]|default:''}
+                                    {if $previousValue neq '' && $currentValue neq $previousValue}
+                                        <input class="form-control text-danger" name="machine_program_{$devices.name[lineDev]}" value="{$currentValue}" readonly="readonly" title="Poprzednia wartość: {$previousValue}">
+                                    {else}
+                                        <input class="form-control" name="machine_program_{$devices.name[lineDev]}" value="{$currentValue}" readonly="readonly">
+                                    {/if}
+                                {else}
+                                    {* Если значение не указано, отображаем пустое поле или "nie określono" *}
+                                    <input class="form-control" name="machine_program_{$devices.name[lineDev]}" value="nie określono" readonly="readonly">
+                                {/if}
+                            </td>
+                        {/section}
+                    </tr>
+                </tbody>
+            </table>
+        {/if}
+    </div>
+    
+   

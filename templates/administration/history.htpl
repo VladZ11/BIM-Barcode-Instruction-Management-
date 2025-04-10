@@ -1,0 +1,67 @@
+<!-- filepath: y:\BIM-backup\templates\administration\history.htpl -->
+<div class="container">
+    <h2>Historia zmian</h2>
+    <div style="margin-bottom: 20px;">
+        <div class="input-group" style="max-width: 400px;">
+            <input type="text" id="barc4SearchInput" class="form-control" placeholder="Wyszukaj po BARC4...">
+            <div class="input-group-append">
+                <button id="searchButton" class="btn btn-primary">Szukaj</button>
+                <button id="clearButton" class="btn btn-secondary">Wyczyść</button>
+            </div>
+        </div>
+    </div>
+    <p id="noResultsMessage" class="alert alert-info" style="display: none;"></p>
+    {if isset($historyRecords) && isset($historyRecords.ID_HISTORY)}
+        <table class="table table-striped" id="historyTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>BARC4</th>
+                    <th>Strona</th>
+                    <th>Autor</th>
+                    <th>Data zmiany</th>
+                    <th>Szczegóły zmian i poprzednie wartości</th>
+                    <th>Archiwum</th>
+                </tr>
+            </thead>
+            <tbody>
+                {section name=i loop=$historyRecords.ID_HISTORY}
+                {assign var="dateStr" value=$historyRecords.CHANGE_DATE[i]}
+                {assign var="dateParts" value="-"|explode:$dateStr}
+                {assign var="timeParts" value=" "|explode:$dateParts[2]}
+                {assign var="day" value=$dateParts[0]}
+                {assign var="month" value=$dateParts[1]}
+                {assign var="year" value=$timeParts[0]}
+                {assign var="time" value=$timeParts[1]|replace:".":":"|truncate:5:""}
+                {assign var="ampm" value=$timeParts[2]}
+                {assign var="formattedDate" value="$day $month 20$year $time $ampm"}
+                <tr>
+                    <td>{$historyRecords.ID_HISTORY[i]}</td>
+                    <td>{$historyRecords.BARC4[i]}</td>
+                    <td>{$historyRecords.SIDE[i]}</td>
+                    <td>{$historyRecords.AUTHOR[i]}</td>
+                    <td>{$formattedDate}</td>
+                    <td>
+                        {assign var="comment" value=$historyRecords.COMMENTS[i]}
+                        {if strpos($comment, 'Usunięto instrukcję') !== false}
+                            <pre class="history-comment history-comment-deleted">{$comment}</pre>
+                        {elseif strpos($comment, 'Utworzono nową instrukcję') !== false}
+                            <pre class="history-comment history-comment-created">{$comment}</pre>
+                        {else}
+                            <pre class="history-comment" style="white-space: pre-wrap; max-width: 500px; border-left: 3px solid #4AE0C0; padding: 5px; background-color:#3c3c31 ; color: white;">{$historyRecords.COMMENTS[i]|replace:" zmieniono na ":"<span style=\"color:#B2FF59;\"><b> zmieniono→ </b></span>"|replace:"-&gt;":"<span style=\"color:#4AE0C0;\"><b>zmieniono na</b></span>"|replace:"Nazwa:":"<span style=\"color:#4AE0C0;\"><b>Nazwa:</b></span>"|replace:"Podgrupa:":"<span style=\"color:#4AE0C0;\"><b>Podgrupa:</b></span>"|replace:"Szerokość płytki:":"<span style=\"color:#4AE0C0;\"><b>Szerokość płytki:</b></span>"|replace:"Nr płytka drukowana:":"<span style=\"color:#4AE0C0;\"><b>Nr płytka drukowana:</b></span>"|replace:"Ilość w panelu:":"<span style=\"color:#4AE0C0;\"><b>Ilość w panelu:</b></span>"|replace:"Kolejność montażu:":"<span style=\"color:#4AE0C0;\"><b>Kolejność montażu:</b></span>"|replace:"Program druku:":"<span style=\"color:#4AE0C0;\"><b>Program druku:</b></span>"|replace:"Program druku 1R:":"<span style=\"color:#4AE0C0;\"><b>Program druku 1R:</b></span>"|replace:"Program druku 2R:":"<span style=\"color:#4AE0C0;\"><b>Program druku 2R:</b></span>"|replace:"Program druku 3R:":"<span style=\"color:#4AE0C0;\"><b>Program druku 3R:</b></span>"|replace:"Program druku 4R:":"<span style=\"color:#4AE0C0;\"><b>Program druku 4R:</b></span>"|replace:"Program druku 1G:":"<span style=\"color:#4AE0C0;\"><b>Program druku 1G:</b></span>"|replace:"Program druku 2G:":"<span style=\"color:#4AE0C0;\"><b>Program druku 2G:</b></span>"|replace:"Program druku 3G:":"<span style=\"color:#4AE0C0;\"><b>Program druku 3G:</b></span>"|replace:"machine_program_1r:":"<span style=\"color:#4AE0C0;\"><b>machine_program_1r:</b></span>"|replace:"machine_program_2r:":"<span style=\"color:#4AE0C0;\"><b>machine_program_2r:</b></span>"|replace:"machine_program_3r:":"<span style=\"color:#4AE0C0;\"><b>machine_program_3r:</b></span>"|replace:"machine_program_4r:":"<span style=\"color:#4AE0C0;\"><b>machine_program_4r:</b></span>"|replace:"machine_program_1g:":"<span style=\"color:#4AE0C0;\"><b>machine_program_1g:</b></span>"|replace:"machine_program_2g:":"<span style=\"color:#4AE0C0;\"><b>machine_program_2g:</b></span>"|replace:"machine_program_3g:":"<span style=\"color:#4AE0C0;\"><b>machine_program_3g:</b></span>"|replace:"Program dla maszyn 1R:":"<span style=\"color:#4AE0C0;\"><b>Program dla maszyn 1R:</b></span>"|replace:"Program dla maszyn 2R:":"<span style=\"color:#4AE0C0;\"><b>Program dla maszyn 2R:</b></span>"|replace:"Program dla maszyn 3R:":"<span style=\"color:#4AE0C0;\"><b>Program dla maszyn 3R:</b></span>"|replace:"Program dla maszyn 4R:":"<span style=\"color:#4AE0C0;\"><b>Program dla maszyn 4R:</b></span>"|replace:"Program dla maszyn 1G:":"<span style=\"color:#4AE0C0;\"><b>Program dla maszyn 1G:</b></span>"|replace:"Program dla maszyn 2G:":"<span style=\"color:#4AE0C0;\"><b>Program dla maszyn 2G:</b></span>"|replace:"Program dla maszyn 3G:":"<span style=\"color:#4AE0C0;\"><b>Program dla maszyn 3G:</b></span>"|replace:"Dodano uwagi:":"<span style=\"color:#5CFF5C;\"><b>Dodano uwagi:</b></span>"|replace:"Dodano uwagi (":"<span style=\"color:#5CFF5C;\"><b>Dodano uwagi (</b></span>"|replace:"Liczba Uwag:":"<span style=\"color:#4AE0C0;\"><b>Liczba Uwag:</b></span>"|replace:"Usunięto uwagi:":"<span style=\"color:#FF6B6B;\"><b>Usunięto uwagi:</b></span>"|replace:"Usunięto uwagi (":"<span style=\"color:#FF6B6B;\"><b>Usunięto uwagi (</b></span>"|replace:"Zmienione pola:":"<span style=\"color:#B2FF59;\"><b>Zmienione pola:</b></span>"|replace:"Skopiowane dane:":"<span style=\"color:#4AE0C0;\"><b>Skopiowane dane:</b></span>"|replace:"Skopiowane uwagi:":"<span style=\"color:#B2FF59;\"><b>Skopiowane uwagi:</b></span>"|replace:"Updated instruction for":"<span style=\"color:#4AE0C0;\"><b>Updated instruction for</b></span>"|replace:"Zaktualizowana instrukcja dla":"<span style=\"color:#47B6FF;\"><b>Zaktualizowana instrukcja dla</b></span>"|replace:"Copied from":"<span style=\"color:#6D9CFF;\"><b>Copied from</b></span>"|replace:"side":"<span style=\"color:#4AE0C0;\"><b>side</b></span>"|replace:"strona":"<span style=\"color:#4AE0C0;\"><b>strona</b></span>"|replace:"Skopiowano z":"<span style=\"color:#5AFFAA;\"><b>Skopiowano z</b></span>"|replace:"Ilość w panelу:":"<span style=\"color:#4AE0C0;\"><b>Ilość w panelу:</b></span>"|replace:"Szerokość płytкi:":"<span style=\"color:#4AE0C0;\"><b>Szerokość płytкi:</b></span>"|replace:"Kolejność montażу:":"<span style=\"color:#4AE0C0;\"><b>Kolejność montażу:</b></span>"}</pre>
+                        {/if}
+                    </td>
+                    <td>
+                        {if strpos($comment, 'Usunięto instrukcję') === false && strpos($comment, 'Utworzono nową instrukcję') === false}
+                            <a href="index.php?controller=administration&action=historyDetail&id={$historyRecords.ID_HISTORY[i]}" class="btn btn-primary btn-sm" title="Podgląd archiwalnej wersji instrukcji przed zmianami">Podgląd</a>
+                        {/if}
+                    </td>
+                </tr>
+                {/section}
+            </tbody>
+        </table>
+    {else}
+        <p>Brak rekordów historii lub błąd danych.</p>
+    {/if}
+</div>
+<script type="text/javascript" src="js/historySearch.js"></script>

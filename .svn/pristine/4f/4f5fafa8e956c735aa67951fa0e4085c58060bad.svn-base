@@ -1,0 +1,182 @@
+<?php
+
+/**
+ * @version 1.0
+ * @date 23.03.2011
+ * @file indexsql.php
+ * @author Jaroslaw Blaszkiewicz
+ * $Author: jarek $
+ * $Revision: 252 $
+ */
+
+
+/**
+ * @brief Class resposible for connect with QDM database.
+ *
+ */
+
+//$this->Manager = new DBManager($dbname, $dbuser, $dbpass);
+
+class SqlCreator_IndexSql extends W_sqlcreator_SQLCreator{
+
+
+    public function findBarcode($barc4){
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $sql = "SELECT * FROM PROG_PRODUCT_NR WHERE barc4 LIKE  :barc4";
+            $params = array(':barc4' => '%'.$barc4.'%');
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params);
+            return $res;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    public function loadGeneralInformation($barc4, $side)
+    {
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $sql = "SELECT * from LPI_SMD_IM_GEN_INFORM inform 
+                WHERE inform.barc4 = :barc4 and inform.side = :side";
+            $params = array(':barc4' => $barc4,':side' => $side);
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params);
+            return $res;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+
+    public function notes($barc4, $side)
+    {
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $sql = "SELECT * from LPI_SMD_IM_NOTE 
+                WHERE barc4 = :barc4 and side = :side";
+            $params = array(':barc4' => $barc4,':side' => $side);
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params);
+            return $res;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+    public function printProg($barc4, $side)
+    {
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $sql = "SELECT * from LPI_SMD_IM_DEV_PRINT_PROG 
+                WHERE barc4 = :barc4 and side = :side";
+            $params = array(':barc4' => $barc4,':side' => $side);
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params);
+            return $res;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+    public function printSqu($barc4, $side)
+    {
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $sql = "SELECT * from LPI_SMD_IM_DEV_PRINT_SQU 
+                WHERE barc4 = :barc4 and side = :side";
+            $params = array(':barc4' => $barc4,':side' => $side);
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params);
+            return $res;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    public function printSup($barc4, $side)
+    {
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $sql = "SELECT * from LPI_SMD_IM_DEV_PRINT_SUP 
+                WHERE barc4 = :barc4 and side = :side";
+            $params = array(':barc4' => $barc4,':side' => $side);
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params);
+            return $res;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    public function dockArm($barc4, $side)
+    {
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $sql = "SELECT * from LPI_SMD_IM_DOCK_DEV_ARM 
+                WHERE barc4 = :barc4 and side = :side";
+            $params = array(':barc4' => $barc4,':side' => $side);
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params);
+            return $res;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+
+    public function dockPro($barc4, $side)
+    {
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $sql = "SELECT * from LPI_SMD_IM_DOCK_DEV_PRO 
+                WHERE barc4 = :barc4 and side = :side";
+            $params = array(':barc4' => $barc4,':side' => $side);
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params);
+            return $res;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+
+
+    public function getMidInformation($mid){
+        try{
+            $params = array(':mid'=>$mid);
+            $sql = "SELECT * FROM MITARBEITER WHERE UPPER(MID)=UPPER(:mid)";
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params);
+            return $res;
+        }catch (Exception $e){
+            return $res;
+        }
+    }
+
+    public function  checkRecordExistInDatabase($barc, $side){
+        try{
+            $params = array(':barc'=>$barc, ':side' => $side);
+            $sql = "SELECT component_wpn, COUNT(component_wpn) AS n FROM (
+                    SELECT co.component_wpn FROM components_bom cb
+                    JOIN components co ON (cb.component_id = co.component_id)
+                    JOIN components_side cs ON (cb.component_side = cs.component_side_id)
+                    WHERE cb.barc4 = :barc AND cs.component_side_id = :side ORDER BY co.component_wpn)
+                    GROUP BY  component_wpn";
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params);
+            return $res;
+        }catch (Exception $e){
+            return $res;
+        }
+    }
+
+
+/*select component_wpn, count(component_wpn) as n from (
+select co.component_wpn from components_bom cb
+join components co on (cb.component_id = co.component_id)
+join components_side cs on (cb.component_side = cs.component_side_id)
+where cb.barc4 = :barc and cs.component_side_id = :side order by co.component_wpn)
+group by  component_wpn
+;*/
+
+
+}

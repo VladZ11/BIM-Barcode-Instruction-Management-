@@ -1,0 +1,31 @@
+<?php
+session_save_path('C:\\Temp');
+session_start();
+ini_set('display_errors', 'ON');
+error_reporting(E_ALL);
+
+
+define("WABCO_DIR", "C:\Inetpub\\wwwroot\\classes\\wabcoFramework\\");
+
+/**
+ *
+ * @var path to wabcoFramework
+ */
+//define("WABCO_DIR", ROOT_DIR);
+
+require_once(WABCO_DIR."bootstrap.php");
+require_once(WABCO_DIR."autoloader/autoloader.php");
+//require_once("C:\Inetpub\\wwwroot\\plugins\\ChartDirector\\lib\\phpchartdir.php");
+
+
+W_Autoloader_Autoloader::getInstance(WABCO_DIR);
+//exit();
+try {
+    $bootstrap = new W_Bootstrap(WABCO_DIR);
+    $bootstrap->execute();
+}catch (Exception $e) {
+    echo "<div style=\"background:red; width: 100%; color: white;\">";
+    echo 'Caught exception: ',  $e->getMessage(), "\n<br>";
+    echo $e->getFile();
+    echo "</div>";
+}

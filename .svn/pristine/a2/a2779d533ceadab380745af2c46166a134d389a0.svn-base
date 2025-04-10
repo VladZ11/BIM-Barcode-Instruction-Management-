@@ -1,0 +1,15 @@
+<div class="row">
+        <div class="col-xs-4">
+                <label for="side" class="col-xs-6 control-label">Strona</label>
+                <select class="form-control col-xs-6" id="side" name="side">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                </select>
+        </div>
+        <div class="col-xs-4 barcode-information">
+                <label for="barc4" class="col-xs-12 control-label">Wybierz barkod</label>
+                <input id="barc4" class="form-control col-xs-12 text-primary" name="barc4" type="text" minlength="4" maxlength="4" placeholder="Wpisz i wybierz barkod" autocomplete="off">
+                <div id="autougester" class="hide">
+                </div>
+        </div>
+</div>

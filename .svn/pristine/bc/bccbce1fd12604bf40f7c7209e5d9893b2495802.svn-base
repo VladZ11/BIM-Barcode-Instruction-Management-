@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b488a169-2ec1-4fed-ae19-cb8cdfc4f214" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="administrationsql.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/sqlcreator/administrationsql.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+              <folding>
+                <marker date="1580731129377" expanded="true" signature="488:548" ph="SELECT barc4... PROG_PRODUCT_NR" />
+                <marker date="1580731129377" expanded="true" signature="1130:1312" ph="INSERT INTO LPI_SMD_IM_HEADER... " />
+                <marker date="1580731129377" expanded="true" signature="2332:2609" ph="INSERT INTO LPI_SMD_IM_GEN_INFORM... " />
+                <marker date="1580731129377" expanded="true" signature="3108:3234" ph="INSERT INTO LPI_SMD_IM_DEV_PRINT_PROG... " />
+                <marker date="1580731129377" expanded="true" signature="3737:3866" ph="INSERT INTO LPI_SMD_IM_DEV_PRINT_SQU... " />
+                <marker date="1580731129377" expanded="true" signature="4364:4489" ph="INSERT INTO LPI_SMD_IM_DEV_PRINT_SUP... " />
+                <marker date="1580731129377" expanded="true" signature="4987:5111" ph="INSERT INTO LPI_SMD_IM_DOCK_DEV_PRO... " />
+                <marker date="1580731129377" expanded="true" signature="5611:5737" ph="INSERT INTO LPI_SMD_IM_DOCK_DEV_ARM... " />
+                <marker date="1580731129377" expanded="true" signature="6284:6330" ph="..." />
+                <marker date="1580731129377" expanded="true" signature="6305:6330" ph="..." />
+                <marker date="1580731129377" expanded="true" signature="6332:6435" ph="INSERT INTO LPI_SMD_IM_NOTE... " />
+                <marker date="1580731129377" expanded="true" signature="6332:6479" ph="INSERT INTO LPI_SMD_IM_NOTE... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="authorization.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/classes/pre/authorization.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="19" column="50" lean-forward="false" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Acl.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/helper/Acl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="31" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.htpl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/header.htpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="16" lean-forward="false" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexsql.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/sqlcreator/indexsql.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1955">
+              <caret line="122" column="5" lean-forward="true" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
+              <folding>
+                <marker date="1580820430665" expanded="true" signature="469:517" ph="SELECT * FRO... PROG_PRODUCT_NR" />
+                <marker date="1580820430665" expanded="true" signature="469:523" ph="SELECT * FRO... PROG_PRODUCT_NR" />
+                <marker date="1580820430665" expanded="true" signature="924:1030" ph="SELECT * fro... LPI_SMD_IM_GEN_INFORM" />
+                <marker date="1580820430665" expanded="true" signature="924:1035" ph="SELECT * fro... LPI_SMD_IM_GEN_INFORM" />
+                <marker date="1580820430665" expanded="true" signature="1429:1513" ph="SELECT * fro... LPI_SMD_IM_NOTE" />
+                <marker date="1580820430665" expanded="true" signature="1909:2003" ph="SELECT * fro... LPI_SMD_IM_DEV_PRINT_PROG" />
+                <marker date="1580820430665" expanded="true" signature="2398:2491" ph="SELECT * fro... LPI_SMD_IM_DEV_PRINT_SQU" />
+                <marker date="1580820430665" expanded="true" signature="2887:2980" ph="SELECT * fro... LPI_SMD_IM_DEV_PRINT_SUP" />
+                <marker date="1580820430665" expanded="true" signature="3375:3467" ph="SELECT * fro... LPI_SMD_IM_DOCK_DEV_ARM" />
+                <marker date="1580820430665" expanded="true" signature="3863:3955" ph="SELECT * fro... LPI_SMD_IM_DOCK_DEV_PRO" />
+                <marker date="1580820430665" expanded="true" signature="4337:4391" ph="SELECT * FRO... MITARBEITER" />
+                <marker date="1580820430665" expanded="true" signature="4768:5204" ph="SELECT compo... component_wpn" />
+                <marker date="1580820430665" expanded="true" signature="4843:5159" ph="SELECT co.co... components_bom" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>r file is too larg</find>
+      <find>imageComment</find>
+      <find>uplo</find>
+      <find>echo</find>
+      <find>Przygotowanie formularza in</find>
+      <find>insertHeaderIM`</find>
+      <find>insertGenInformIM</find>
+      <find>side</find>
+      <find>insertNoteIM</find>
+      <find>prepareNoteToSave</find>
+      <find>savedBarcodes</find>
+      <find>error</find>
+      <find>areaTableSmtareaTableSmt</find>
+      <find>montarz</find>
+      <find>areaTableSmt</find>
+      <find>insertHeaderIM</find>
+      <find>removeWhitespace</find>
+      <find>prog_product_nr</find>
+      <find>loadDataOnstructions</find>
+      <find>barcode</find>
+      <find>Stanowiska montażu</find>
+      <find>printSup</find>
+      <find>Niezalo</find>
+      <find>setUserName</find>
+      <find>userRole</find>
+      <find>setUserRole</find>
+      <find>getUserCode</find>
+      <find>setUserRole`</find>
+      <find>Helper_Acl</find>
+      <find>isAllowed</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/templates/generateTableResult.htpl" />
+        <option value="$PROJECT_DIR$/templates/listError.htpl" />
+        <option value="$PROJECT_DIR$/classes/pagecreator/preferencespage.php" />
+        <option value="$PROJECT_DIR$/templates/form.htpl" />
+        <option value="$PROJECT_DIR$/classes/helper/Helpers_Errors.php" />
+        <option value="$PROJECT_DIR$/classes/helper/Helpers_Log.php" />
+        <option value="$PROJECT_DIR$/templates/login-form.htpl" />
+        <option value="$PROJECT_DIR$/classes/controllers/preferencescontrol.php" />
+        <option value="$PROJECT_DIR$/templates/preferences.htpl" />
+        <option value="$PROJECT_DIR$/classes/sqlcreator/preferencessql.php" />
+        <option value="$PROJECT_DIR$/classes/helper/Helpers_Access_Configuration.php" />
+        <option value="$PROJECT_DIR$/classes/helper/loadGeneralInformationFromLine.php" />
+        <option value="$PROJECT_DIR$/classes/helper/timeOperations.php" />
+        <option value="$PROJECT_DIR$/classes/helper/time.php" />
+        <option value="$PROJECT_DIR$/classes/pdf/pdfparser-master/src/Smalot/PdfParser/Parser.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/classes/pdf/vendor/autoload.php" />
+        <option value="$PROJECT_DIR$/classes/pdf/index.php" />
+        <option value="$PROJECT_DIR$/templates/home.htpl" />
+        <option value="$PROJECT_DIR$/classes/pagecreator/administrationpage.php" />
+        <option value="$PROJECT_DIR$/templates/administration/findBarcViaWpn.htpl" />
+        <option value="$PROJECT_DIR$/config.php" />
+        <option value="$PROJECT_DIR$/templates/administration/index.htpl" />
+        <option value="$PROJECT_DIR$/templates/administration/prepare.htpl" />
+        <option value="$PROJECT_DIR$/classes/sqlcreator/administrationsql.php" />
+        <option value="$PROJECT_DIR$/classes/controllers/administrationcontrol.php" />
+        <option value="$PROJECT_DIR$/templates/index.htpl" />
+        <option value="$PROJECT_DIR$/classes/pagecreator/indexpage.php" />
+        <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/js/script.js" />
+        <option value="$PROJECT_DIR$/templates/parts/listBarcodes.htpl" />
+        <option value="$PROJECT_DIR$/templates/parts/areaSearch.htpl" />
+        <option value="$PROJECT_DIR$/classes/sqlcreator/indexsql.php" />
+        <option value="$PROJECT_DIR$/classes/controllers/indexcontrol.php" />
+        <option value="$PROJECT_DIR$/templates/parts/searchedData.htpl" />
+        <option value="$PROJECT_DIR$/classes/helper/UserData.php" />
+        <option value="$PROJECT_DIR$/classes/pre/authorization.php" />
+        <option value="$PROJECT_DIR$/classes/helper/Acl.php" />
+        <option value="$PROJECT_DIR$/templates/header.htpl" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="1672" />
+    <option name="y" value="-121" />
+    <option name="width" value="1696" />
+    <option name="height" value="1026" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="LoPaiSmd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LoPaiSmd" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LoPaiSmd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LoPaiSmd" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="classes" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LoPaiSmd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LoPaiSmd" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="classes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LoPaiSmd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LoPaiSmd" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="classes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="helper" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LoPaiSmd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LoPaiSmd" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="classes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="pre" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LoPaiSmd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LoPaiSmd" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="classes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="sqlcreator" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LoPaiSmd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LoPaiSmd" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LoPaiSmd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LoPaiSmd" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LoPaiSmd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LoPaiSmd" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LoPaiSmd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LoPaiSmd" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="administration" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="LoPaiSmd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LoPaiSmd" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="parts" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="V:/scrapanalizator_test_smt" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://S:/mchfata/templates/index.htpl" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="V:\LoPaiSmd\classes\helper" />
+      <recent name="V:\LoPaiSmd\templates\parts" />
+      <recent name="V:\LoPaiSmd\templates\administration" />
+      <recent name="V:\LoPaiSmd\classes\sqlcreator" />
+      <recent name="V:\LoPaiSmd\classes\pagecreator" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="LoPaiSmd" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner directory="$PROJECT_DIR$" />
+    </configuration>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.LoPaiSmd" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b488a169-2ec1-4fed-ae19-cb8cdfc4f214" name="Default" comment="" />
+      <created>1532513154537</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1532513154537</updated>
+      <workItem from="1532513156308" duration="12080000" />
+      <workItem from="1532595051366" duration="22976000" />
+      <workItem from="1534399024116" duration="7409000" />
+      <workItem from="1552283456264" duration="37119000" />
+      <workItem from="1552987813246" duration="75000" />
+      <workItem from="1553762465569" duration="11181000" />
+      <workItem from="1554197104329" duration="31824000" />
+      <workItem from="1554703338812" duration="41904000" />
+      <workItem from="1554957894503" duration="17672000" />
+      <workItem from="1555042185291" duration="21678000" />
+      <workItem from="1555394873156" duration="6072000" />
+      <workItem from="1555474141116" duration="12167000" />
+      <workItem from="1555562594209" duration="1728000" />
+      <workItem from="1555565190269" duration="12889000" />
+      <workItem from="1556079350412" duration="32475000" />
+      <workItem from="1557202193565" duration="1490000" />
+      <workItem from="1557205447957" duration="618000" />
+      <workItem from="1557213884505" duration="1265000" />
+      <workItem from="1557288981465" duration="1114000" />
+      <workItem from="1557299140170" duration="27101000" />
+      <workItem from="1557393281679" duration="3261000" />
+      <workItem from="1557809793795" duration="3212000" />
+      <workItem from="1560488708531" duration="1560000" />
+      <workItem from="1564720829582" duration="767000" />
+      <workItem from="1566366909793" duration="1722000" />
+      <workItem from="1566474166364" duration="2223000" />
+      <workItem from="1571893756114" duration="28455000" />
+      <workItem from="1572261420224" duration="9498000" />
+      <workItem from="1572338179267" duration="7449000" />
+      <workItem from="1572512916896" duration="1407000" />
+      <workItem from="1574161134118" duration="4184000" />
+      <workItem from="1574229399289" duration="19836000" />
+      <workItem from="1576155903668" duration="641000" />
+      <workItem from="1578478182927" duration="5621000" />
+      <workItem from="1578898611748" duration="16749000" />
+      <workItem from="1579498929159" duration="16919000" />
+      <workItem from="1580103519247" duration="56125000" />
+      <workItem from="1580708536009" duration="55540000" />
+      <workItem from="1581054750243" duration="7000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="536035000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1672" y="-121" width="1696" height="1026" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2683374" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07941835" sideWeight="0.50488997" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3433155" sideWeight="0.49511003" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.07667211" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18581907" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/images/logo.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/old/templates/index.htpl" />
+    <entry file="file://$PROJECT_DIR$/old/classes/controllers/indexcontrol.php" />
+    <entry file="file://$PROJECT_DIR$/templates/form.htpl" />
+    <entry file="file://$PROJECT_DIR$/classes/pagecreator/preferencespage.php" />
+    <entry file="file://$PROJECT_DIR$/templates/listError.htpl" />
+    <entry file="file://$PROJECT_DIR$/templates/login-form.htpl" />
+    <entry file="file://$PROJECT_DIR$/classes/helper/Helpers_Log.php" />
+    <entry file="file://$PROJECT_DIR$/templates/preferences.htpl" />
+    <entry file="file://$PROJECT_DIR$/classes/controllers/preferencescontrol.php" />
+    <entry file="file://$PROJECT_DIR$/classes/helper/Helpers_Errors.php" />
+    <entry file="file://$PROJECT_DIR$/classes/sqlcreator/preferencessql.php" />
+    <entry file="file://$PROJECT_DIR$/classes/helper/Helpers_Access_Configuration - Copy.php" />
+    <entry file="file://$PROJECT_DIR$/classes/helper/Helpers_Access_Configuration.php" />
+    <entry file="file://$PROJECT_DIR$/classes/helper/time.php" />
+    <entry file="file://$PROJECT_DIR$/classes/helper/time.php" />
+    <entry file="file://$PROJECT_DIR$/images/favicon/favicon.ico">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/pdf/pdfparsermaster/src/Smalot/PdfParser/Font/FontType0.php" />
+    <entry file="file://$PROJECT_DIR$/classes/pdf/pdfparsermaster/composer.json" />
+    <entry file="file://$PROJECT_DIR$/classes/pdf/class.pdf2text.php.php" />
+    <entry file="file://$PROJECT_DIR$/classes/pdf/pdfparsermaster/src/Smalot/PdfParser/Encoding.php" />
+    <entry file="file://$PROJECT_DIR$/classes/pdf/pdfparsermaster/src/Smalot/PdfParser/Document.php" />
+    <entry file="file://$PROJECT_DIR$/classes/pdf/pdfparsermaster/.atoum.php" />
+    <entry file="file://$PROJECT_DIR$/classes/pdf/pdfparsermaster/src/Smalot/PdfParser/Tests/Units/Parser.php" />
+    <entry file="file://$PROJECT_DIR$/classes/pdf/pdf/vendor/smalot/pdfparser/src/Smalot/PdfParser/Font/FontType0.php" />
+    <entry file="file://$PROJECT_DIR$/classes/pdf/pdfparsermaster/src/Smalot/PdfParser/Parser.php" />
+    <entry file="file://$PROJECT_DIR$/classes/pdf/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/pdf/vendor/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Temp1_bootstrap-3.3.7-dist.zip/bootstrap-3.3.7-dist/js/bootstrap.js" />
+    <entry file="file://$PROJECT_DIR$/templates/home.htpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="62" lean-forward="false" selection-start-line="29" selection-start-column="62" selection-end-line="29" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/administration/findBarcViaWpn.htpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/pagecreator/administrationpage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="36" column="70" lean-forward="false" selection-start-line="36" selection-start-column="70" selection-end-line="36" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/administration/prepare.htpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="127" lean-forward="false" selection-start-line="4" selection-start-column="112" selection-end-line="4" selection-end-column="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/pagecreator/indexpage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="33" column="33" lean-forward="false" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.htpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="45" lean-forward="false" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/parts/listBarcodes.htpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="68" column="43" lean-forward="false" selection-start-line="68" selection-start-column="43" selection-end-line="68" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="3" lean-forward="true" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/parts/searchedData.htpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="280" column="70" lean-forward="false" selection-start-line="280" selection-start-column="62" selection-end-line="280" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/administration/index.htpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="255" column="119" lean-forward="false" selection-start-line="255" selection-start-column="102" selection-end-line="255" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/parts/areaSearch.htpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="33" lean-forward="false" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="2" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="35" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="25" lean-forward="true" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/controllers/administrationcontrol.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="168" column="36" lean-forward="true" selection-start-line="168" selection-start-column="36" selection-end-line="168" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/helper/UserData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="56" column="31" lean-forward="false" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/controllers/indexcontrol.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/header.htpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="16" lean-forward="false" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/sqlcreator/indexsql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1955">
+          <caret line="122" column="5" lean-forward="true" selection-start-line="122" selection-start-column="5" selection-end-line="122" selection-end-column="5" />
+          <folding>
+            <marker date="1580820430665" expanded="true" signature="469:517" ph="SELECT * FRO... PROG_PRODUCT_NR" />
+            <marker date="1580820430665" expanded="true" signature="469:523" ph="SELECT * FRO... PROG_PRODUCT_NR" />
+            <marker date="1580820430665" expanded="true" signature="924:1030" ph="SELECT * fro... LPI_SMD_IM_GEN_INFORM" />
+            <marker date="1580820430665" expanded="true" signature="924:1035" ph="SELECT * fro... LPI_SMD_IM_GEN_INFORM" />
+            <marker date="1580820430665" expanded="true" signature="1429:1513" ph="SELECT * fro... LPI_SMD_IM_NOTE" />
+            <marker date="1580820430665" expanded="true" signature="1909:2003" ph="SELECT * fro... LPI_SMD_IM_DEV_PRINT_PROG" />
+            <marker date="1580820430665" expanded="true" signature="2398:2491" ph="SELECT * fro... LPI_SMD_IM_DEV_PRINT_SQU" />
+            <marker date="1580820430665" expanded="true" signature="2887:2980" ph="SELECT * fro... LPI_SMD_IM_DEV_PRINT_SUP" />
+            <marker date="1580820430665" expanded="true" signature="3375:3467" ph="SELECT * fro... LPI_SMD_IM_DOCK_DEV_ARM" />
+            <marker date="1580820430665" expanded="true" signature="3863:3955" ph="SELECT * fro... LPI_SMD_IM_DOCK_DEV_PRO" />
+            <marker date="1580820430665" expanded="true" signature="4337:4391" ph="SELECT * FRO... MITARBEITER" />
+            <marker date="1580820430665" expanded="true" signature="4768:5204" ph="SELECT compo... component_wpn" />
+            <marker date="1580820430665" expanded="true" signature="4843:5159" ph="SELECT co.co... components_bom" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/sqlcreator/administrationsql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+          <folding>
+            <marker date="1580731129377" expanded="true" signature="488:548" ph="SELECT barc4... PROG_PRODUCT_NR" />
+            <marker date="1580731129377" expanded="true" signature="1130:1312" ph="INSERT INTO LPI_SMD_IM_HEADER... " />
+            <marker date="1580731129377" expanded="true" signature="2332:2609" ph="INSERT INTO LPI_SMD_IM_GEN_INFORM... " />
+            <marker date="1580731129377" expanded="true" signature="3108:3234" ph="INSERT INTO LPI_SMD_IM_DEV_PRINT_PROG... " />
+            <marker date="1580731129377" expanded="true" signature="3737:3866" ph="INSERT INTO LPI_SMD_IM_DEV_PRINT_SQU... " />
+            <marker date="1580731129377" expanded="true" signature="4364:4489" ph="INSERT INTO LPI_SMD_IM_DEV_PRINT_SUP... " />
+            <marker date="1580731129377" expanded="true" signature="4987:5111" ph="INSERT INTO LPI_SMD_IM_DOCK_DEV_PRO... " />
+            <marker date="1580731129377" expanded="true" signature="5611:5737" ph="INSERT INTO LPI_SMD_IM_DOCK_DEV_ARM... " />
+            <marker date="1580731129377" expanded="true" signature="6284:6330" ph="..." />
+            <marker date="1580731129377" expanded="true" signature="6305:6330" ph="..." />
+            <marker date="1580731129377" expanded="true" signature="6332:6435" ph="INSERT INTO LPI_SMD_IM_NOTE... " />
+            <marker date="1580731129377" expanded="true" signature="6332:6479" ph="INSERT INTO LPI_SMD_IM_NOTE... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/helper/Acl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="31" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/pre/authorization.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="19" column="50" lean-forward="false" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

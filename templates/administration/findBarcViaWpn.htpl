@@ -1,0 +1,6 @@
+
+{section name=barc4 loop=$barcs4|@count}
+{$barcs4[$smarty.section.barc4.index]},
+{sectionelse}
+none
+{/section}

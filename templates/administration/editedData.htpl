@@ -1,0 +1,186 @@
+
+<script src="js/sweetalert.min.js"></script>
+
+<form id="form-edit-instruction"  method="post"></form>
+
+<div id="searchedData">
+
+    <div class="row">
+        <div class="col-xs-4">
+            <label for="name" class="col-xs-12 control-label">Nazwa</label>
+            <input name="name" class="form-control col-xs-12" id="name" value="{$loadGeneralInformation.NAME_I[0]}" data-history="{$loadGeneralInformation.NAME_I[0]}" placeholder="Nazwa">
+        </div>
+
+        <div class="col-xs-4">
+            <label for="numTilesInPanel" class="col-xs-12 control-label">Ilość w panelu</label>
+            <input name="numTilesInPanel" maxlength="2" class="form-control col-xs-12" id="numTilesInPanel" value="{$loadGeneralInformation.NUM_TILES_IN_PANEL[0]}" data-history="{$loadGeneralInformation.NUM_TILES_IN_PANEL[0]}" placeholder="Ilość w panelу">
+        </div>
+
+        <div class="col-xs-4">
+            <label for="wpn" class="col-xs-12 control-label">WPN</label>
+            <input readonly="readonly" name="wpn" class="form-control col-xs-12" id="wpn" value="{$findWpn[0]}" data-history="{$findWpn[0]}" placeholder="WPN">
+        </div>
+
+        <div class="col-xs-4">
+            <label for="subgroup" class="col-xs-12 control-label">Podgrupa</label>
+            <input name="subgroup" class="form-control col-xs-12" id="subgroup" value="{$loadGeneralInformation.SUBGROUP[0]}" data-history="{$loadGeneralInformation.SUBGROUP[0]}" placeholder="Podgrupa">
+        </div>
+
+        <div class="col-xs-4">
+            <label for="tile" class="col-xs-12 control-label">Nr płytka drukowana</label>
+            <input name="tile" class="form-control" id="tile" value="{$loadGeneralInformation.TILE[0]}" data-history="{$loadGeneralInformation.TILE[0]}" placeholder="Nr płytka drukowana">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <label for="tileWidth" class="col-xs-12 control-label">Szerokość płytкi</label>
+            <input name="tileWidth" class="form-control col-xs-12" id="tileWidth" value="{$loadGeneralInformation.WIDTH_TILES[0]}" data-history="{$loadGeneralInformation.WIDTH_TILES[0]}" placeholder="Szerokość płytкi">
+        </div>
+        <div class="col-sm-4">
+            <label for="assembly_order" class="col-xs-12 control-label">Kolejność montażu</label>
+            <input name="assembly_order" class="form-control col-xs-12" id="assembly_order" value="{$loadGeneralInformation.ASSEMBLY_ORDER[0]}" data-history="{$loadGeneralInformation.ASSEMBLY_ORDER[0]}" placeholder="Кolejność montażu">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-3">
+            <label for="print_prog" class="col-xs-12 control-label">Program do drukarki</label>
+            <input name="print_prog" class="form-control col-xs-12" id="print_prog" value="{$printProg.PROGRAM[0]}" data-history="{$printProg.PROGRAM[0]}" placeholder="Program do drukarki">
+        </div>
+
+        <div class="col-xs-3">
+            <label for="whereProgram" class="col-xs-12 control-label">Wskaż gdzie program?</label>
+            {section name=lineDev loop=$devices.name}
+    {if in_array($devices.name[lineDev], $printProg.LINE)}
+        {section name=line loop=$printProg.LINE}
+            {if $printProg.LINE[line] eq $devices.name[lineDev]}
+                <label for="print_program_{$devices.name[lineDev]}" class="copy-label">
+                    {$devices.name[lineDev]}
+                    <input name="print_program_{$devices.name[lineDev]}" 
+                           type="checkbox" 
+                           id="print_program_{$devices.name[lineDev]}" 
+                           checked="checked" 
+                           data-history="1"> 
+                </label>
+
+                <label for="old_print_prog_{$devices.name[lineDev]}" class="hide">
+                    {$devices.name[lineDev]} 
+                    <input name="old_print_prog_{$devices.name[lineDev]}" 
+                           type="checkbox" 
+                           id="old_print_prog_{$devices.name[lineDev]}" 
+                           checked="checked" 
+                           data-history="1"> 
+                </label>
+            {/if}
+        {/section}
+    {else}
+        <label for="print_program_{$devices.name[lineDev]}" class="copy-label">
+            {$devices.name[lineDev]}
+            <input name="print_program_{$devices.name[lineDev]}" 
+                   type="checkbox" 
+                   id="print_program_{$devices.name[lineDev]}" 
+                   data-history="0"> 
+        </label>
+    {/if}
+{/section}
+
+        </div>
+    </div>
+
+     <!-- Блок с заметками -->
+     <div class="row">
+        <div class="col-sm-12" id="notice">
+            <h2>1. Uwagi</h2>
+            <!-- Update the notes list template with saved status indicators -->
+            <ul id="notes-list">
+                {section name=notes loop=$notes.ID_PARENT_NOTE}
+                    <li class="{if $notes.CATEGORY[notes] eq 1}
+                        text-danger
+                        {elseif $notes.CATEGORY[notes] eq 2}
+                        text-success
+                        {elseif $notes.CATEGORY[notes] eq 3}
+                        text-primary
+                        {elseif $notes.CATEGORY[notes] eq 4}
+                        text-warning
+                     {/if} margin-bottom-15"
+                        title="{$notes.CATTEXT[notes]}"
+                        data-note-index="{$smarty.section.notes.index}"
+                        data-saved="true"
+                    >
+                        <div>
+                            <select class="form-control" name="notes[]">
+                                <option value="0">Wybierz uwagę</option>
+                                {section name=getTypicalNotes loop=$getTypicalNotes.NOTE}
+                                    <option {if $getTypicalNotes.ID_COMMENT[getTypicalNotes] eq $notes.ID_PARENT_NOTE[notes]} selected="selected" {/if} value="{$getTypicalNotes.ID_COMMENT[getTypicalNotes]}">
+                                        [{$getTypicalNotes.CATEGORY[getTypicalNotes]}] [{$getTypicalNotes.COLOR[getTypicalNotes]}] {$getTypicalNotes.NOTE[getTypicalNotes]}
+                                    </option>
+                                {/section}
+                            </select>
+                            <input id="id_row_{$smarty.section.notes.index}" type="hidden" name="id[]" value="{$notes.ID_NOTE[notes]}">
+                            <!-- Кнопка "-" для удаления заметки -->
+                            <button type="button" class="btn btn-xs btn-danger btn-remove-note" data-note-index="{$smarty.section.notes.index}">-</button>
+                            <span class="note-status text-success">Zapisano</span>
+                        </div>
+                        {if $notes.IMG_NOTE[notes]}
+                            <div class="position-relative js-image-{$notes.ID_NOTE[notes]}">
+                                <div class="js-delete-image position-absolute cursor-pointer" style="right:10px; top:10px;" title="Usuń obrazek">
+                                    Usuń obrazек
+                                </div>
+                                <img alt="{$notes.NOTE[notes]}" title="{$notes.NOTE[notes]}" src="http://serverpath/dokumenty/instrukcje/bim/montage_instructions_img/{$notes.IMG_NOTE[notes]}">
+                            </div>
+                        {else}
+                            <div class="position-relative js-image-{$notes.ID_NOTE[notes]}">
+                                <label for="imageNotice_{$smarty.section.notes.index}">Załaduj plik:</label>
+                                <input type="file" id="imageNotice_{$smarty.section.notes.index}" name="imageNotice">
+                            </div>
+                        {/if}
+                    </li>
+                {/section}
+            </ul>
+            <!-- Кнопка "+" для добавления новой заметки, отображается только если есть заметки -->
+            {if $notes.ID_PARENT_NOTE|@count > 0}
+                <button type="button" class="btn btn-xs btn-success btn-add-note">+</button>
+            {/if}
+        </div>
+    </div>
+    
+
+    <div class="row">
+        <div class="col-sm-12" id="placeMontage">
+            <h2>2.Stanowiska montażu</h2>
+        </div>
+
+        {if isset($devices)}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Program</th>
+                        {section name=lineDev loop=$devices.name}
+                            <th><b>{$devices.name[lineDev]}</b></th>
+                        {/section}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Program dla maszyn układających</td>
+                        {section name=lineDev loop=$devices.name}
+                            <td>
+                                {if in_array($devices.name[lineDev],$dockPro.LINE)}
+                                    {section name=line loop=$dockPro.LINE}
+                                        {if $dockPro.LINE[line] eq $devices.name[lineDev]}
+                                            <input class="form-control" name="machine_program_{$devices.name[lineDev]}" value="{$dockPro.PROGRAM[line]}" data-history="{$dockPro.PROGRAM[line]}" placeholder="Program">
+                                        {/if}
+                                    {/section}
+                                {else}
+                                    <input class="form-control" name="machine_program_{$devices.name[lineDev]}" placeholder="Program" data-history="">
+                                {/if}
+                            </td>
+                        {/section}
+                    </tr>
+                </tbody>
+            </table>
+        {/if}
+    </div>
+</div>
+</form>

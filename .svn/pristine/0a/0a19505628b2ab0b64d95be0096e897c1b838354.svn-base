@@ -1,0 +1,79 @@
+
+    $('input.js-calendar').datetimepicker({
+        timepicker: false,
+        format: 'd-m-Y'
+    });
+
+    var devices = $("input[name='driveNumber[]']");
+    devices.on("keyup", function () {
+        var that = $(this),
+            errorInputNameClass = "errorValidation",
+            nav = $(".nav");
+        $.ajax({
+            type: 'POST',
+            url: 'index.php?controller=administration&action=findBarcViaWpn',
+            data:  "driveNumber=" + that.val(),
+            success: function(msg){
+                var barcode = msg.trim(),
+                    inputObj = $("#barcodeNumber_" + that.data("idel"));
+                if(barcode == "none")
+                {
+                    inputObj.val("Brak barkodu dla wpisanego WPN. Poproś o dodanie barkodu do bazy.");
+                    inputObj.addClass(errorInputNameClass);
+                    nav.addClass("error-on-page");
+                }
+                else{
+                    inputObj.val(barcode);
+                    inputObj.removeClass(errorInputNameClass);
+                    devices.each(function( index ) {
+                        if($(this).val() != "" && index+1 == devices.length)
+                        {
+                            nav.removeClass("error-on-page");
+                        }
+                    });
+
+                }
+            }
+        });
+    })
+
+    var barc4 = $("#barc4"), autougester = "autougester";
+    barc4.on("keyup", function () {
+        var that = $(this),autougester = $("#autougester");
+        $.ajax({
+            type: 'POST',
+            url: 'index.php?controller=index&action=findBarcode',
+            data:  "barc4=" + that.val(),
+            beforeSend: function () {
+               // autougester.remove();
+            },
+            success: function(msg){
+                autougester.removeClass("hide");
+                autougester.html(msg);
+            }
+        });
+    });
+
+    function getDataToInputs() {
+        var side = $("#side"),
+            barc4 = $("#barc4");
+
+        $.ajax({
+            type: 'POST',
+            url: 'index.php?controller=index&action=getDataInstructions',
+            data:  "barc4=" + barc4.val()+"&side=" + side.val(),
+            beforeSend: function () {
+                // autougester.remove();
+            },
+            success: function(msg){
+                $("#searchedData").html(msg);
+            }
+        });
+    };
+    
+    var autougester = $(".barcode-information");
+    autougester.on("click","li", function () {
+        autougester.find("#autougester").addClass("hide");
+        barc4.val($(this).data("barcode"));
+        getDataToInputs();
+    });

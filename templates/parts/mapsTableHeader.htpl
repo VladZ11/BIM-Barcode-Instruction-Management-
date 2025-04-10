@@ -1,0 +1,22 @@
+<thead>
+        <tr>
+                <th>
+                        Pozycja na stole
+                </th>
+                <th>
+                        Numer części
+                </th>
+                <th>
+                        Szerokość
+                </th>
+                <th>
+                        Skok
+                </th>
+                <th>
+                        Ilość
+                </th>
+                <th>
+                        Barcode
+                </th>
+        </tr>
+</thead>

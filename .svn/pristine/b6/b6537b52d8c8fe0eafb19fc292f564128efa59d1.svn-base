@@ -1,0 +1,18 @@
+<?php
+$cO['db']['db'] = "wplqdm"; //wplqdm_uat
+$cO['db']['username'] = "onbstat";
+$cO['db']['password'] = "onbstat";
+$cO['dbManager'] = "C:\Inetpub\\wwwroot\\classes\\DBManager2.php";
+$cO['appName'] = "LoPaISmd";
+$cO['smarty']['dir'] = "C:\Inetpub\\wwwroot\\plugins\\smarty\\libs\\Smarty-2.6.22\\libs\\Smarty.class.php";
+$cO['smarty']['template_dir'] = "templates";
+$cO['smarty']['compile_dir'] = "C:\Inetpub\\wwwroot\\templates_c";
+$cO['smarty']['compile_id'] = "LoPaISmd";
+$cO['smarty']['cache_dir'] = "cache";
+$cO['Zend']['dir'] = "C:\Inetpub\\wwwroot\\plugins\\";
+$cO['pre']['ControllerClass'] = "Pre_Authorization";
+$cO['indexTpl'] = "home.htpl";
+
+
+//@ini_set('display_errors', 'on');
+//define('_PS_DEBUG_SQL_', true);

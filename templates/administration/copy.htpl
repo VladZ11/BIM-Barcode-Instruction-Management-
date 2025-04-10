@@ -1,0 +1,29 @@
+
+<div class="container" style="clear: both;">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs error-on-page" role="tablist">
+        <li role="presentation" class="active"><a href="#othetInformation" aria-controls="othetInformation" role="tab" data-toggle="tab">Kopiowanie instrukcji</a></li>
+    </ul>
+    
+    <form id="copyForm" autocomplete="off" action="index.php?controller=administration&action=copy" method="post" enctype="multipart/form-data">
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="othetInformation">
+                <div class="row">
+                    <div class="col-xs-12">&nbsp;</div>
+                </div>
+                {include file='parts/areaSearch1.htpl'}
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label for="documentNr" class="control-label">Numer dokumentu:</label>
+                        <input type="text" id="documentNr" class="form-control" name="documentNr" placeholder="Wpisz numer dokumentu">
+                    </div>
+                </div>
+                {include file='administration/editedData1.htpl'}
+            </div>
+            <div>
+                <input class="pull-right" type="submit" name="saveData" value="Zapisz dane">
+            </div>
+        </div>
+    </form>
+</div>

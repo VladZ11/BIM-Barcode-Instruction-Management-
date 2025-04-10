@@ -1,0 +1,189 @@
+<?php
+
+/**
+ * @version 1.0
+ * @date 23.03.2011
+ * @file indexsql.php
+ * @author Jaroslaw Blaszkiewicz
+ * $Author: jarek $
+ * $Revision: 252 $
+ */
+
+
+/**
+ * @brief Class resposible for connect with QDM database.
+ *
+ */
+
+//$this->Manager = new DBManager($dbname, $dbuser, $dbpass);
+
+class SqlCreator_AdministrationSql extends W_sqlcreator_SQLCreator{
+
+    public  function checkBarcodeForWpn($wpnNumber){
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $sql ="SELECT barc4 FROM PROG_PRODUCT_NR WHERE wabconr = :wpnNumber";
+            $params = array(':wpnNumber' => $wpnNumber);
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params);
+            return $res["BARC4"];
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    public function insertHeaderIM($barc4, $side, $documentNr, $date_created, $author){
+        try{
+           // $this->WPLQDM_Manager->debug_mode_on();
+            $params = array(':barc4' => $barc4, ":side" => $side, ":doc_nr" => $documentNr, ":date_created" => $date_created, ":author" => $author);
+            $sql ="INSERT INTO LPI_SMD_IM_HEADER (BARC4, SIDE, DOC_NR, DATE_CREATED, AUTHOR) 
+                   VALUES (:barc4, :side, :doc_nr, to_date(:date_created,'YYYY/MM/DD HH24:MI:SS'), :author)";
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params, false);
+            return $this->WPLQDM_Manager->get_numrow();
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    public function insertGenInformIM($barc4, $side, $name, $subgroup, $tile, $sieve, $numberTilesPanel, $tileWidth, $technology, $assemblyOrder)
+    {
+        try{
+           // $this->WPLQDM_Manager->debug_mode_on();
+            $params = array(':barc4' => $barc4,
+                            ':side' => $side,
+                            ":name_i" => $name,
+                            ":subgroup" =>$subgroup,
+                            ":tile" => $tile,
+                            ":sieve" => $sieve,
+                            ":numberTilesPanel" => $numberTilesPanel,
+                            ":tileWidth" => $tileWidth,
+                            ":technology" => $technology,
+                            ":assemblyOrder" => $assemblyOrder
+            );
+            $sql ="INSERT INTO LPI_SMD_IM_GEN_INFORM (BARC4, SIDE, NAME_I, SUBGROUP, TILE, SIEVE, NUM_TILES_IN_PANEL, WIDTH_TILES, TECHNOLOGY, ASSEMBLY_ORDER) 
+                   VALUES (:barc4, :side, :name_i, :subgroup, :tile, :sieve, :numberTilesPanel, :tileWidth, :technology, :assemblyOrder)";
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params, false);
+            return $this->WPLQDM_Manager->get_numrow();
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    public function insertPrintProgIM($barc4, $side, $program, $line){
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+
+            $params = array(":barc4" => $barc4, ':side' => $side, ":program" => $program, ":line" => $line);
+
+            $sql ="INSERT INTO LPI_SMD_IM_DEV_PRINT_PROG (BARC4, SIDE, PROGRAM, LINE) 
+                   VALUES (:barc4, :side, :program, :line)";
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params, false);
+            return $this->WPLQDM_Manager->get_numrow();
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    public function insertPrintSquIM($barc4, $side, $squeegees, $line){
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $params = array(":barc4" => $barc4, ":side" => $side, ":squeegees" => $squeegees, ":line" => $line);
+
+            $sql ="INSERT INTO LPI_SMD_IM_DEV_PRINT_SQU (BARC4, SIDE, SQUEEGEES, LINE) 
+                   VALUES (:barc4, :side, :squeegees, :line)";
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params, false);
+            return $this->WPLQDM_Manager->get_numrow();
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+
+    public function insertPrintSupIM($barc4, $side, $support, $line){
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $params = array(":barc4" => $barc4, ":side" => $side, ":support" => $support, ":line" => $line);
+
+            $sql ="INSERT INTO LPI_SMD_IM_DEV_PRINT_SUP (BARC4, SIDE, SUPPORT, LINE) 
+                   VALUES (:barc4, :side, :support, :line)";
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params, false);
+            return $this->WPLQDM_Manager->get_numrow();
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+
+    public function insertDockProIM($barc4, $side,  $program, $line){
+        try{
+           // $this->WPLQDM_Manager->debug_mode_on();
+            $params = array(":barc4" => $barc4, ":side" => $side, ":program" => $program, ":line" => $line);
+
+            $sql ="INSERT INTO LPI_SMD_IM_DOCK_DEV_PRO (BARC4, SIDE, PROGRAM, LINE) 
+                   VALUES (:barc4, :side, :program, :line)";
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params, false);
+            return $this->WPLQDM_Manager->get_numrow();
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+
+    public function insertDockArmIM($barc4, $side, $armament, $line){
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $params = array(":barc4" => $barc4, ":side" => $side, ":armament" => $armament, ":line" => $line);
+
+            $sql ="INSERT INTO LPI_SMD_IM_DOCK_DEV_ARM (BARC4, SIDE, ARMAMENT, LINE) 
+                   VALUES (:barc4, :side, :armament, :line)";
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params, false);
+            return $this->WPLQDM_Manager->get_numrow();
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    public function insertNoteIM($barc4, $side, $note, $imageComment, $noteCategory){
+        try{
+            //$this->WPLQDM_Manager->debug_mode_on();
+            $params = array(":barc4" => $barc4, ":side" => $side, ':note' => $note, ':imageComment' => $imageComment, ':noteCategory' => $noteCategory);
+//echo "<b>".$imageComment."</b><br>";
+            $sql ="INSERT INTO LPI_SMD_IM_NOTE (BARC4, SIDE, NOTE, IMG_NOTE, CATEGORY) 
+                   VALUES (:barc4, :side, :note, :imageComment, :noteCategory)";
+            $res = array();
+            $this->WPLQDM_Manager->doSql($sql, $res, $params, false);
+            return $this->WPLQDM_Manager->get_numrow();
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+
+
+
+    public function rollback(){
+        $params = array();
+        $res = array();
+        $this->WPLQDM_Manager->doSQL("rollback",$res, $params);
+        $res['INF']['N'] = $this->WPLQDM_Manager->get_numrow();
+        $res['INF']['ORA_ERROR'] = $this->WPLQDM_Manager->get_oci_error();
+        return true;
+    }
+
+    public function commit(){
+        $params = array();
+        $res = array();
+        $this->WPLQDM_Manager->doSQL("commit",$res, $params);
+        $res['INF']['N'] = $this->WPLQDM_Manager->get_numrow();
+        $res['INF']['ORA_ERROR'] = $this->WPLQDM_Manager->get_oci_error();
+        return true;
+    }
+
+}

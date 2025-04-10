@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @version 1.0
+ * @date 23.03.2011 
+ * @file indexpage.php
+ * @author Jaroslaw Blaszkiewicz
+ * $Author: jarek $
+ * $Revision: 235 $
+ */
+
+/**
+ * 
+ * @brief Class resposible for display page.
+ * 
+ * The display returned to the user.
+ *
+ */
+class pagecreator_administrationPage extends W_pagecreator_PageCreator{
+	
+	/**
+	 * @brief Display main page.
+	 * 
+	 * This method display template for main page.
+	 */
+	public function indexAction(){
+		$this->Display("administration/index.htpl");
+	}
+    public function prepareAction(){
+        $this->Display("administration/index.htpl");
+    }
+    public function resetSessionAction(){
+        $this->Display("administration/index.htpl");
+    }
+    public function findBarcViaWpnAction(){
+        //$this->Display("administration/index.htpl");
+        $this->displayOnlyContent("administration/findBarcViaWpn.htpl");
+    }
+
+}

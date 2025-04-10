@@ -1,0 +1,24 @@
+
+<div class="container" style="clear: both;">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs error-on-page" role="tablist">
+        <li role="presentation" class="active"><a href="#othetInformation" aria-controls="othetInformation" role="tab" data-toggle="tab">Usuń instrukcje</a></li>
+    </ul>
+    <form autocomplete="off" action="index.php?controller=administration&action=delete" method="post" enctype="multipart/form-data">
+        <!-- Tab panes -->
+        <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="othetInformation">
+                    <div class="row">
+                        <div class="col-xs-12">&nbsp;</div>
+                    </div>
+                    {include file='parts/areaSearch.htpl'}
+                   
+                    <input type="hidden" name="currentUserName" value="{$userName}">
+                    <input type="hidden" name="currentUserLastName" value="{$userLastName}">
+                </div>
+            <div>
+                <input class="pull-right" type="submit" name="saveData" value="Usuń instrukcje">
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,13 @@
+digraph "Helper_UserData\getUserRole"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="Helper_UserData\\getUserRole",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Gets the user's role in the system."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Pre_Authorization\\prepSmarty\lUserVars",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_pre___authorization.html#a98b1e28e0dae15dabab8579160a578c4",tooltip="Prepares user variables for Smarty templates."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Pre_Authorization\\preMethod",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_pre___authorization.html#a76bab6a36a40f77fe3199b9bebb91511",tooltip="Main entry point for the authorization process."];
+}

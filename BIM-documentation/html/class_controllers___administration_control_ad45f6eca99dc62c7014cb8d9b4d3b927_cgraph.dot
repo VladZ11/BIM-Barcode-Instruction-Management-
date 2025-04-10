@@ -1,0 +1,13 @@
+digraph "Controllers_AdministrationControl\resetSessionAction"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="Controllers_Administration\lControl\\resetSessionAction",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Resets session data and redirects to a specified page."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Controllers_Administration\lControl\\redirectPageTo",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_controllers___administration_control.html#ab3b92f014036cde36a8ab025da7cc079",tooltip="Redirects user to a specific page within the administration controller."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Controllers_Administration\lControl\\resetFormPrepareSession",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_controllers___administration_control.html#ab1f269f14d28bc82ed780a939d56be53",tooltip="Resets the form preparation session data."];
+}

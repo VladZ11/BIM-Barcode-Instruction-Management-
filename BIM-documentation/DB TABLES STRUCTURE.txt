@@ -1,0 +1,184 @@
+# BIM System Database Schema Documentation
+
+## Core Instruction Tables
+
+### BIM_SMD_IM_NOTE
+**Description**: Stores notes/comments associated with specific instructions.  
+**Primary Key**: ID_NOTE  
+**Fields**:
+- ID_NOTE - Unique identifier for the note (Primary Key)
+- BARC4 - Barcode identifier (4 characters)
+- SIDE - Side identifier (1 or 2)
+- IMG_NOTE - Name of the image file associated with the note (can be NULL)
+- ID_PARENT_NOTE - Reference to BIM_SMD_IM_TYPICAL_COMMENT.ID_COMMENT
+
+### BIM_SMD_IM_TYPICAL_COMMENT
+**Description**: Contains predefined typical comments that can be used in notes.  
+**Primary Key**: ID_COMMENT  
+**Fields**:
+- ID_COMMENT - Unique identifier for the comment (Primary Key)
+- CATEGORY - Foreign key to BIM_SMD_IM_CATEGORY_NOTE.ID
+- NOTE - Text content of the comment
+
+### BIM_SMD_IM_CATEGORY_NOTE
+**Description**: Defines categories for notes and comments.  
+**Primary Key**: ID  
+**Fields**:
+- ID - Unique identifier for the category (Primary Key)
+- CATEGORY - Name or description of the category
+- COLOR - Color code for visual representation of the category
+
+### BIM_SMD_IM_GEN_INFORM
+**Description**: Stores general information about instructions.  
+**Primary Key**: BARC4, SIDE (Composite)  
+**Fields**:
+- BARC4 - Barcode identifier (4 characters) (Part of Primary Key)
+- SIDE - Side identifier (1 or 2) (Part of Primary Key)
+- NAME_I - Name of the instruction
+- SUBGROUP - Subgroup identifier
+- TILE - Tile identifier
+- NUM_TILES_IN_PANEL - Number of tiles in panel (numeric)
+- WIDTH_TILES - Width of tiles
+- ASSEMBLY_ORDER - Assembly order information
+
+### BIM_SMD_IM_HEADER
+**Description**: Contains header information for instructions.  
+**Primary Key**: BARC4, SIDE (Composite)  
+**Fields**:
+- BARC4 - Barcode identifier (4 characters) (Part of Primary Key)
+- SIDE - Side identifier (1 or 2) (Part of Primary Key)
+- DOC_NR - Document number reference
+- DATE_CREATED - Date when the instruction was created
+- AUTHOR - Creator of the instruction
+
+### BIM_SMD_IM_DEV_PRINT_PROG
+**Description**: Stores print program assignments for device lines.  
+**Primary Key**: BARC4, SIDE, LINE (Composite)  
+**Fields**:
+- BARC4 - Barcode identifier (4 characters) (Part of Primary Key)
+- SIDE - Side identifier (1 or 2) (Part of Primary Key)
+- PROGRAM - Name of the print program
+- LINE - Line identifier (Part of Primary Key)
+
+### BIM_SMD_IM_DOCK_DEV_PRO
+**Description**: Stores machine program assignments for device lines.  
+**Primary Key**: BARC4, SIDE, LINE (Composite)  
+**Fields**:
+- BARC4 - Barcode identifier (4 characters) (Part of Primary Key)
+- SIDE - Side identifier (1 or 2) (Part of Primary Key)
+- PROGRAM - Name of the machine program
+- LINE - Line identifier (Part of Primary Key)
+
+### BIM_SMD_IM_HISTORY
+**Description**: Records historical changes to instructions with complete snapshots.  
+**Primary Key**: ID_HISTORY  
+**Fields**:
+- ID_HISTORY - Unique identifier for the history entry (Primary Key)
+- BARC4 - Barcode identifier (4 characters)
+- SIDE - Side identifier (1 or 2)
+- NAME_I - Name of the instruction at time of snapshot
+- SUBGROUP - Subgroup identifier at time of snapshot
+- TILE - Tile identifier at time of snapshot
+- NUM_TILES_IN_PANEL - Number of tiles in panel at time of snapshot
+- WIDTH_TILES - Width of tiles at time of snapshot
+- ASSEMBLY_ORDER - Assembly order at time of snapshot
+- PROGRAM_PRINT_PROG - Print program at time of snapshot
+- MACHINE_PROGRAM_1R, 2R, 3R, 4R - Machine programs for R lines at time of snapshot
+- MACHINE_PROGRAM_1G, 2G, 3G - Machine programs for G lines at time of snapshot
+- NOTES_ID_1, 2, 3, 4 - Note IDs associated with the instruction at time of snapshot
+- AUTHOR - User who made the change
+- COMMENTS - Descriptive comments about the change
+- CHANGE_DATE - Timestamp when the change was made
+- LINE - Line identifier at time of snapshot
+- WPN - Work Process Number at time of snapshot
+
+## SMD Map Tables
+
+### BIM_SMD_MAPS
+**Description**: Stores SMD map definitions and properties.  
+**Primary Key**: MAP_ID  
+**Fields**:
+- MAP_ID - Unique identifier for the map (Primary Key)
+- LINE - Production line identifier
+- PROGRAM - Program name
+- COM - Comments or description
+- AUTHOR - Map creator
+- PCB_LENGTH - Length of PCB
+- PCB_WIDTH - Width of PCB
+- THICKNESS - PCB thickness
+- SIDE - Side identifier (1 or 2)
+- VERSION - Version information
+
+### BIM_SMD_MODULES
+**Description**: Contains information about modules within SMD maps.  
+**Primary Key**: MODULE_ID  
+**Fields**:
+- MODULE_ID - Unique identifier for the module (Primary Key)
+- MAP_ID - Foreign key to BIM_SMD_MAPS.MAP_ID
+- QUANTITY_COMPONENTS - Number of components in the module
+- NUMBER_FEEDERS - Number of feeders used by the module
+- CREATE_DATE - Creation date of the module
+
+### BIM_SMD_CONVERSION_MAPS
+**Description**: Provides component positioning details for SMD machines.  
+**Primary Key**: FEEDER_ID  
+**Fields**:
+- FEEDER_ID - Unique identifier for the feeder position (Primary Key)
+- MODULE_ID - Foreign key to BIM_SMD_MODULES.MODULE_ID
+- MODULE_NUMBER - Module number within the map
+- POSITION_ON_TABLE - Position on machine table
+- PART_NUMBER - Component part number
+- WIDTH - Component width
+- BOUND - Boundary information
+- QUANTITY - Quantity of components
+- BARCODE - Barcode of the component
+- COMPONENT_ID - Component identifier
+
+## Relationships
+
+1. BIM_SMD_IM_NOTE has a foreign key relationship with:
+   - BIM_SMD_IM_TYPICAL_COMMENT through ID_PARENT_NOTE
+   - PROG_PRODUCT_NR through BARC4
+
+2. BIM_SMD_IM_TYPICAL_COMMENT has a foreign key relationship with:
+   - BIM_SMD_IM_CATEGORY_NOTE through CATEGORY
+
+3. BIM_SMD_IM_GEN_INFORM has a foreign key relationship with:
+   - PROG_PRODUCT_NR through BARC4
+
+4. BIM_SMD_IM_DEV_PRINT_PROG has a foreign key relationship with:
+   - PROG_PRODUCT_NR through BARC4
+
+5. BIM_SMD_IM_DOCK_DEV_PRO has a foreign key relationship with:
+   - PROG_PRODUCT_NR through BARC4
+
+6. BIM_SMD_MODULES has a foreign key relationship with:
+   - BIM_SMD_MAPS through MAP_ID
+
+7. BIM_SMD_CONVERSION_MAPS has a foreign key relationship with:
+   - BIM_SMD_MODULES through MODULE_ID
+
+## Special Features
+
+1. Auto-increment triggers:
+   - SET_BIM_SMD_CONVERSION_MAPS for FEEDER_ID
+   - SET_BIM_SMD_IM_NOTE_ID for ID_NOTE
+   - SET_BIM_SMD_IM_TYPICAL_COMMENT for ID_COMMENT
+   - SET_BIM_SMD_MAPS for MAP_ID
+   - SET_BIM_SMD_MODULES for MODULE_ID
+
+2. Identity column:
+   - BIM_SMD_IM_HISTORY.ID_HISTORY uses Oracle's IDENTITY feature
+
+3. Timestamp defaults:
+   - BIM_SMD_IM_HISTORY.CHANGE_DATE defaults to CURRENT_TIMESTAMP
+
+## Table Usage Context
+
+1. Core instruction tables (BIM_SMD_IM_*) store manufacturing instructions for PCB assembly.
+
+2. Map-related tables (BIM_SMD_MAPS, BIM_SMD_MODULES, BIM_SMD_CONVERSION_MAPS) manage component positioning information for automated pick-and-place machines.
+
+3. History table (BIM_SMD_IM_HISTORY) tracks all changes to instructions with complete snapshots, enabling audit trails and version comparison.
+
+4. Note tables (BIM_SMD_IM_NOTE, BIM_SMD_IM_TYPICAL_COMMENT, BIM_SMD_IM_CATEGORY_NOTE) provide a structured system for adding comments and annotations to instructions, with categories for visual organization.

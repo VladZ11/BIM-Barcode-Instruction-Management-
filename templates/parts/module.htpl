@@ -1,0 +1,27 @@
+<div role="m{$idModule}" class="tab-pane {if $active eq 1 } active {/if}" id="m{$idModule}">
+   <div class="add-to-cart"></div>
+    {include file='parts/mapsHeader.htpl' header=$header}
+        <table class="table table-striped table-bordered table-hover">
+            {include file='parts/mapsTableHeader.htpl'}
+                <tbody>
+                        {section name=module loop=$module.MODULE_NUMBER}
+                            {if $smarty.section.module.index != 0}
+                                    <tr>
+                                            <td>{$idModule}_{$smarty.section.module.index}</td>
+                                            <td>{$module.PART_NUMBER[module]}</td>
+                                            <td>{$module.WIDTH[module]}</td>
+                                            <td>{$module.BOUND[module]}</td>
+                                            <td>{$module.QUANTITY[module]}</td>
+                                            <td class="js-order-component-in-ewa cursor-pointer" data-componentWpn="{$module.BARCODE[module]}">
+                                              {if $module.BARCODE[module]}
+                                                      <img src="images/cart.png" alt="{$module.BARCODE[module]}" title="{$module.BARCODE[module]}">
+                                                      <span style="padding-left:20px;" >{$module.BARCODE[module]}</span>
+                                                      <span class="status"></span>
+                                              {/if}
+                                            </td>
+                                    </tr>
+                            {/if}
+                        {/section}
+                </tbody>
+        </table>
+</div>

@@ -1,0 +1,44 @@
+<div class="container" style="clear: both;">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs error-on-page" role="tablist">
+        <li role="presentation" class="active"><a href="#othetInformation" aria-controls="othetInformation" role="tab" data-toggle="tab">Konfugiracja uwag</a></li>
+    </ul>
+    <form autocomplete="off" action="index.php?controller=administration&action=addNotices" method="post">
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="othetInformation">
+                <div class="row">
+                    <div class="col-xs-12">&nbsp;</div>
+                </div>
+                {include file='parts/addNotice.htpl'}
+            </div>
+            <div class="row">
+                <div class="col-xs-12">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <input class="pull-right" type="submit" name="saveData" value="Dodaj uwagę">
+                </div>
+            </div>
+        </div>
+    </form>
+    <form autocomplete="off" action="index.php?controller=administration&action=deleteNotices" method="post">
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="othetInformation">
+                <div class="row">
+                    <div class="col-xs-12">&nbsp;</div>
+                </div>
+                {include file='parts/deleteNotice.htpl'}
+            </div>
+            <div class="row">
+                <div class="col-xs-12">&nbsp;</div>
+            </div>
+            <div>
+                <input class="pull-right" type="submit" name="saveData" value="Usuń uwagę">
+            </div>
+        </div>
+    </form>
+
+
+</div>

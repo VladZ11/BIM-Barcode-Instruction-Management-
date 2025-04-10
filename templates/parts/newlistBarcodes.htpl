@@ -1,0 +1,18 @@
+
+<ul class="full-width-ul">
+    {if $findnewBarcodeResults|@count > 0}
+        {foreach from=$findnewBarcodeResults item=result}
+            {if $result.SITUATION == 'both'}
+            <li class="full-width-li js-error-yellow">
+                ⚠️ Instrukcja dla podanego barkodu została już wypełniona,<br> sprawdź poprawność kodu.<br>
+                Jeśli chcesz zmodyfikować instrukcję,<br> która została już wykonana - użyj funkcji
+/RELEASED/bim/index.php?controller=administration&action=edit" target="_blank">edycji</a>!                 <a href="https://wrcv31231.z
+            </li>
+            {elseif $result.SITUATION == 'prog_only'}
+                <li class="full-width-li js-error-green">✅ Nie ma jeszcze instrukcji dla tego barkodu.</li>
+            {/if}
+        {/foreach}
+    {else}
+        <li class="full-width-li js-error-red">❗ Ten barkod nie istnieje w bazie danych. Dokładnie sprawdź, czy kod jest poprawny!</li>
+    {/if}
+</ul>

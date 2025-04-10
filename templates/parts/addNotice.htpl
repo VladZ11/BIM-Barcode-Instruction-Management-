@@ -1,0 +1,21 @@
+<div class="row">
+        <div class="col-xs-12">
+            {if $_PARAMS.status  eq 1}
+               <p class="text-success">Moje gratulacje, dodałeś uwagę. </p>
+            {/if}
+        </div>
+        <div class="col-xs-6">
+                <label for="catNotice" class="col-xs-12 control-label">Kategoria uwagi</label>
+                <select id="catNotice" class="form-control col-xs-12 text-primary" name="catNotice">
+                        <option value="0">Wybierz kategorię</option>
+                    {section name=cat  loop=$categoryNotes.ID}
+                            <option value="{$categoryNotes.ID[cat]}"> [{$categoryNotes.COLOR[cat]}] [{$categoryNotes.CATEGORY[cat]}] </option>
+                    {/section}
+                </select>
+        </div>
+        <div class="col-xs-6">
+                <label for="addNotice" class="col-xs-12 control-label">Treść uwagi</label>
+                <input id="addNotice" class="form-control col-xs-12 text-primary" name="addNotice" type="text"  placeholder="Wpisz nową uwagę">
+        </div>
+</div>
+

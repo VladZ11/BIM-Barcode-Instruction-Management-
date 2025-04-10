@@ -1,0 +1,82 @@
+<?php
+
+class Helper_UserData
+{
+
+    static $instance;
+
+    private $ufname = null;
+
+    private $ulname = null;
+
+    private $uscode = null;
+
+    private $uimid = null;
+
+    private $usrole = 'USER';
+
+    private function __construct()
+    {
+    }
+
+    private function __clone()
+    {
+    }
+
+    static function instance()
+    {
+        if (empty(self::$instance)) self::$instance = new Helper_UserData;
+        return self::$instance;
+    }
+
+    public function setUserName($value)
+    {
+        $this->ufname = $value;
+    }
+
+    public function getUserName()
+    {
+        return $this->ufname;
+    }
+
+    public function setUserLastName($value)
+    {
+        $this->ulname = $value;
+    }
+
+    public function getUserLastName()
+    {
+        return $this->ulname;
+    }
+
+    public function setUserCode($value)
+    {
+        $this->uscode = $value;
+    }
+
+    public function getUserCode()
+    {
+        return $this->uscode;
+    }
+
+    public function setUserRole($value)
+    {
+        $this->usrole = $value;
+    }
+
+    public function getUserRole()
+    {
+        return $this->usrole;
+    }
+
+    public function setUserImid($value)
+    {
+        $this->uimid = $value;
+    }
+
+    public function getUserImid()
+    {
+        return $this->uimid;
+    }
+
+}

@@ -1,0 +1,24 @@
+<?php
+class Helper_Acl extends Zend_Acl{
+	
+	public function __construct(){
+
+	    define('GUEST', "GUEST");
+	    //define('USER', null);
+	    define('ADMIN', "ADMIN");
+
+		//ROLE
+		$this->addRole(new Zend_Acl_Role('GUEST'));
+        //$this->addRole(new Zend_Acl_Role('USER'),'GUEST');
+		$this->addRole(new Zend_Acl_Role('ADMIN'),'GUEST');
+
+    	//RESOURCE
+        //$this->addResource('default');
+		$this->addResource('index');
+        $this->addResource('administration');
+
+        //PERMISSIONS
+        $this->allow(GUEST, 'index');
+        $this->allow(ADMIN, 'administration');
+	}
+}
