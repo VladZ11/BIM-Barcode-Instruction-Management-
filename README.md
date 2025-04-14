@@ -13,7 +13,7 @@ A PHP-based system for managing barcode instructions, built with Smarty template
 - **Smarty**: Templating engine for dynamic views
 - **jQuery**: Client-side interactivity
 - **Bootstrap**: Responsive UI framework
-- **MySQL**: Database (structure included in documentation)
+- **SQL**: Database (structure included in documentation)
 
 ## Setup
 1. Clone the repository:
